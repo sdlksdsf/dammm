@@ -1,585 +1,617 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en-CA" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frankie's Diner — Queen West's Neighbourhood Diner Since 1977 | Toronto</title>
-  <meta name="description" content="Serving hearty all-day breakfast, famous homemade burgers, Chicken Clubs, Reubens, Hollywood Cobb salads & hand-spun milkshakes at 994 Queen St. W, Toronto since 1977." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frankie's Diner | 994 Queen St. W, Toronto | Since 1977</title>
+  <meta name="description" content="The neighbourhood diner at 994 Queen Street West. All day breakfast, The Ossington melt, chicken club with hand cut chip truck fries, Reubens and thick milkshakes. Order direct for pickup.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/studio-core.css">
   <style>
-    :root {
-      --booth: #8A1E1E;
-      --booth-dark: #6D1515;
-      --rye: #FAF4E8;
-      --plate: #FFFDF8;
-      --mustard: #C98B1E;
-      --ink: #191614;
-      --muted: #5E554D;
-      --border: rgba(25, 22, 20, 0.13);
-      --radius: 14px;
+    :root, [data-theme="light"] {
+      --font-display: 'Archivo Black', 'Archivo', sans-serif;
+      --font-body: 'Archivo', system-ui, sans-serif;
+      --bg: #fdf9f2;
+      --bg-alt: #f5ecdc;
+      --surface: #ffffff;
+      --surface-2: #f7efdf;
+      --header-bg: rgba(253, 249, 242, 0.9);
+      --float-bg: rgba(255, 255, 255, 0.94);
+      --text: #1a1512;
+      --text-2: #423a33;
+      --text-3: #6b6055;
+      --border: rgba(26, 21, 18, 0.12);
+      --border-strong: rgba(26, 21, 18, 0.24);
+      --accent: #c0392b;
+      --accent-strong: #9d2d21;
+      --accent-text: #a83226;
+      --accent-soft: rgba(192, 57, 43, 0.1);
+      --accent-border: rgba(192, 57, 43, 0.27);
+      --accent-glow: rgba(192, 57, 43, 0.27);
+      --on-accent: #ffffff;
+      --accent-2: #c98a12;
+      --accent-2-soft: rgba(201, 138, 18, 0.14);
+      --accent-2-text: #8d5f06;
+      --accent-2-border: rgba(201, 138, 18, 0.32);
+      --hero-orb-1: rgba(192, 57, 43, 0.13);
+      --hero-orb-2: rgba(201, 138, 18, 0.15);
+      --contrast-bg: #1a1512;
+      --contrast-surface: rgba(255, 255, 255, 0.06);
+      --contrast-text: #fdf9f2;
+      --contrast-text-2: #d6cabb;
+      --contrast-border: rgba(255, 255, 255, 0.13);
+      --contrast-accent: #f0a58f;
+      --hero-ratio: 4 / 4.5;
+      --feature-ratio: 4 / 4.4;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--rye);
-      color: var(--ink);
-      line-height: 1.58;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 1.15; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; }
-
-    .preview-bar {
-      background: var(--ink);
-      color: #FAF4E8;
-      font-size: 0.82rem;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .preview-bar a {
-      background: var(--booth);
-      color: #fff;
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.78rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(250, 244, 232, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--ink);
-    }
-    .nav-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .diner-logo {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-    .diner-logo strong {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 1.45rem;
-      color: var(--booth);
-      letter-spacing: -0.02em;
-    }
-    .diner-logo span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      background: var(--ink);
-      color: var(--rye);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-    nav { display: flex; gap: 26px; font-size: 0.9rem; font-weight: 600; }
-    nav a:hover { color: var(--booth); }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      transition: all 0.18s;
-    }
-    .btn-red { background: var(--booth); color: #fff; box-shadow: 3px 3px 0 var(--ink); }
-    .btn-red:hover { background: var(--booth-dark); transform: translate(-1px, -1px); }
-    .btn-line { background: var(--plate); color: var(--ink); border: 2px solid var(--ink); }
-    .btn-line:hover { background: #EFE5D2; }
-
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 52px 24px 72px;
-      display: grid;
-      grid-template-columns: 1.03fr 0.97fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .est-tag {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--booth);
-      border-bottom: 2px solid var(--booth);
-      padding-bottom: 4px;
-      margin-bottom: 18px;
-    }
-    .hero h1 { font-size: clamp(2.4rem, 4.7vw, 3.85rem); margin-bottom: 18px; }
-    .hero h1 em { color: var(--booth); font-style: italic; }
-    .hero p { font-size: 1.04rem; color: var(--muted); max-width: 510px; margin-bottom: 28px; }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
-    .diner-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      border-top: 1.5px solid var(--border);
-      padding-top: 22px;
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-    .diner-stats strong { display: block; font-size: 1.15rem; color: var(--ink); }
-    .hero-frame {
-      border: 2px solid var(--ink);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 8px 8px 0 var(--booth);
-      background: var(--plate);
-    }
-    .hero-frame img { width: 100%; aspect-ratio: 4 / 3.2; object-fit: cover; }
-    .frame-cap {
-      padding: 13px 18px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 2px solid var(--ink);
-    }
-
-    /* Direct Order Callout */
-    .save-strip {
-      background: var(--booth);
-      color: #FFFDF8;
-      padding: 20px 24px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 0.94rem;
-      border-top: 2px solid var(--ink);
-      border-bottom: 2px solid var(--ink);
-    }
-
-    .section { max-width: 1200px; margin: 0 auto; padding: 76px 24px; }
-    .sec-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-    .sec-label { font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--booth); margin-bottom: 8px; }
-    .sec-top h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); }
-    .cat-bar { display: flex; gap: 8px; flex-wrap: wrap; }
-    .cbtn {
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1.5px solid var(--ink);
-      background: var(--plate);
-      font-weight: 700;
-      font-size: 0.84rem;
-    }
-    .cbtn.active, .cbtn:hover { background: var(--ink); color: var(--rye); }
-
-    .menu-board {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 18px;
-    }
-    .dish {
-      background: var(--plate);
-      border: 1.5px solid var(--ink);
-      border-radius: var(--radius);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-    .dish-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
-    .dish h3 { font-size: 1.15rem; }
-    .dish-price { font-weight: 700; color: var(--booth); font-size: 1.02rem; white-space: nowrap; }
-    .dish p { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
-    .dish-foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 12px;
-      border-top: 1px dashed var(--border);
-    }
-    .stamp {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 3px 9px;
-      border-radius: 4px;
-      background: #F6E6C8;
-      color: #6B4300;
-    }
-
-    .reviews-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .rev {
-      background: var(--plate);
-      border: 1.5px solid var(--ink);
-      border-radius: var(--radius);
-      padding: 26px;
-    }
-    .rev p { font-family: 'Libre Baskerville', serif; font-size: 0.98rem; line-height: 1.55; margin: 10px 0 14px; }
-    .rev small { font-weight: 700; color: var(--muted); }
-
-    .visit-panel {
-      background: var(--ink);
-      color: var(--rye);
-      border-radius: 22px;
-      padding: 50px 46px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-    }
-    .h-line {
-      display: flex;
-      justify-content: space-between;
-      padding: 11px 0;
-      border-bottom: 1px solid rgba(250, 244, 232, 0.14);
-      font-size: 0.95rem;
-    }
-    .group-form {
-      background: #26221F;
-      border-radius: 16px;
-      padding: 26px;
-      display: grid;
-      gap: 12px;
-    }
-    .group-form input, .group-form select {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-family: inherit;
-    }
-    .group-form select option { color: var(--ink); }
-
-    .ok-banner {
-      display: none;
-      background: #E4F2E7;
-      color: #1A5128;
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      margin-top: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 34px 24px;
-      font-size: 0.86rem;
-      color: var(--muted);
-      border-top: 1.5px solid var(--border);
-    }
-
-    .drawer-bg {
-      position: fixed;
-      inset: 0;
-      background: rgba(25, 22, 20, 0.58);
-      display: none;
-      justify-content: flex-end;
-      z-index: 100;
-    }
-    .drawer-bg.open { display: flex; }
-    .drawer {
-      background: var(--plate);
-      width: min(430px, 100%);
-      height: 100%;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-left: 2px solid var(--ink);
-      overflow-y: auto;
-    }
-
-    @media (max-width: 900px) {
-      nav { display: none; }
-      .hero, .reviews-row, .visit-panel { grid-template-columns: 1fr; }
-      .visit-panel { padding: 30px 22px; }
+    [data-theme="dark"] {
+      --bg: #12100e;
+      --bg-alt: #1b1714;
+      --surface: #221d19;
+      --surface-2: #2d2721;
+      --header-bg: rgba(18, 16, 14, 0.9);
+      --float-bg: rgba(34, 29, 25, 0.94);
+      --text: #fdf9f2;
+      --text-2: #ded2c4;
+      --text-3: #b0a091;
+      --border: rgba(255, 255, 255, 0.11);
+      --border-strong: rgba(255, 255, 255, 0.23);
+      --accent: #c94229;
+      --accent-strong: #a83226;
+      --accent-text: #f28a72;
+      --accent-soft: rgba(242, 138, 114, 0.14);
+      --accent-border: rgba(242, 138, 114, 0.3);
+      --accent-glow: rgba(212, 71, 47, 0.34);
+      --on-accent: #ffffff;
+      --accent-2: #e0a63a;
+      --accent-2-soft: rgba(224, 166, 58, 0.15);
+      --accent-2-text: #f3c56a;
+      --accent-2-border: rgba(224, 166, 58, 0.32);
+      --hero-orb-1: rgba(242, 138, 114, 0.16);
+      --hero-orb-2: rgba(224, 166, 58, 0.14);
+      --contrast-bg: #fdf9f2;
+      --contrast-surface: #ffffff;
+      --contrast-text: #1a1512;
+      --contrast-text-2: #423a33;
+      --contrast-border: rgba(26, 21, 18, 0.12);
+      --contrast-accent: #a83226;
     }
   </style>
 </head>
 <body>
-  <div class="preview-bar" id="previewBar">
-    <span>Custom redesign preview for <strong>Frankie's Diner (994 Queen St. W, Toronto)</strong> by Shayan — fully editable menu, hours, photos &amp; direct ordering.</span>
-    <a href="mailto:shayan44wrgs@gmail.com?subject=Frankies%20Diner%20Website%20Preview">Claim or Customize</a> <a href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20just%20checked%20out%20the%20website%20preview%20for%20Frankies%20Diner" target="_blank" rel="noopener">WhatsApp +92 312 4228811</a>
-    <button onclick="document.getElementById('previewBar').remove()" style="background:none;color:#ccc;font-size:1.1rem;">&times;</button>
+  <div class="proto-bar" role="region" aria-label="Prototype notice">
+    <div class="proto-inner">
+      <div class="proto-msg">
+        <span class="proto-badge">Prototype</span>
+        <span>Built for <strong>Frankie's Diner</strong> by Shayan. Anything here can be customized for your diner.</span>
+      </div>
+      <div class="proto-contacts">
+        <a class="proto-chip" href="mailto:shayan44wrgs@gmail.com?subject=Frankie%27s%20Diner%20Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></svg>
+          shayan44wrgs@gmail.com
+        </a>
+        <a class="proto-chip proto-chip--wa" href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20saw%20the%20Frankie%27s%20Diner%20website%20prototype" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +92 312 4228811
+        </a>
+      </div>
+    </div>
   </div>
 
-  <header>
-    <div class="nav-wrap">
-      <a href="#" class="diner-logo">
-        <strong>Frankie's Diner</strong>
-        <span>Est. 1977</span>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#top" class="brand">
+        <span class="brand-mark">F</span>
+        <span class="brand-text">
+          <span class="brand-name">Frankie's Diner</span>
+          <span class="brand-sub">994 Queen St. W · Est. 1977</span>
+        </span>
       </a>
-      <nav>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#menu">Full Menu</a>
+        <a href="#groups">Groups</a>
         <a href="#reviews">Regulars</a>
         <a href="#visit">Hours &amp; Queen West</a>
       </nav>
-      <button class="btn btn-red" onclick="openOrder(true)">Order Direct Pickup (<span id="orderCount">0</span>)</button>
+      <div class="nav-actions">
+        <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+          <span class="theme-label">Dark</span>
+        </button>
+        <button type="button" class="bag-btn" data-open-bag>
+          <span class="bag-label">Order Direct</span>
+          <span class="bag-count" data-bag-count>0</span>
+        </button>
+        <button type="button" class="burger-btn" data-burger aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <div class="mobile-nav-list">
+          <a href="#menu">Breakfast, Burgers &amp; Shakes</a>
+          <a href="#groups">Big Tables &amp; Crew Orders</a>
+          <a href="#reviews">What Regulars Say</a>
+          <a href="#visit">Hours &amp; Directions</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <div>
-        <span class="est-tag">Queen &amp; Ossington · Toronto Staple Since 1977</span>
-        <h1>Classic comfort food, generous plates &amp; <em>no fuss.</em></h1>
-        <p>Pull up a booth or counter stool at 994 Queen St. West. From three-egg breakfasts and fluffy pancakes to The Ossington melt, hand-cut chip-truck fries, Reubens, and thick milkshakes—feeling like family for nearly 50 years.</p>
-        <div class="hero-actions">
-          <a href="#menu" class="btn btn-red">Order Direct &amp; Skip App Fees</a>
-          <a href="tel:+14165881936" class="btn btn-line">Call (416) 588-1936</a>
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="hero-pills">
+            <span class="eyebrow-pill">Queen and Ossington Since 1977</span>
+            <span class="status-pill" id="liveStatus">
+              <span class="status-dot"></span>
+              <span id="liveStatusText">Open today from 9:30am</span>
+            </span>
+          </div>
+          <h1>Booths, big plates and coffee that never stops <span class="accent-word">at Queen and Ossington.</span></h1>
+          <p class="hero-lead">Nearly fifty years on the same block. Three egg breakfasts, pancakes off the flat top, The Ossington melt, hand cut chip truck fries, and milkshakes spun the old way. Order direct and skip the app fees.</p>
+          <div class="hero-ctas">
+            <a href="#menu" class="btn btn-primary">Order Direct for Pickup</a>
+            <a href="tel:+14165881936" class="btn btn-secondary">Call (416) 588-1936</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>4.5 / 5</strong>
+              <span>500+ local reviews</span>
+            </div>
+            <div class="stat-item">
+              <strong>Since 1977</strong>
+              <span>Same corner on Queen West</span>
+            </div>
+            <div class="stat-item">
+              <strong>All Day</strong>
+              <span>Breakfast served open to close</span>
+            </div>
+          </div>
         </div>
-        <div class="diner-stats">
-          <div><strong>4.5 ★ Rated</strong>500+ local reviews</div>
-          <div><strong>All-Day Comfort</strong>Breakfast, burgers &amp; shakes</div>
-          <div><strong>994 Queen St. W</strong>M6J 1G8 · Near Ossington</div>
-        </div>
-      </div>
-      <div class="hero-frame">
-        <img src="/assets/frankies-diner-hero.jpg" alt="The Ossington grilled rye cheddar melt with chip-truck fries, buttermilk pancakes, bacon and eggs, and strawberry milkshake" />
-        <div class="frame-cap">
-          <span>Pictured: The Ossington Melt, Original Breakfast &amp; Shake</span>
-          <button class="cbtn" onclick="addDish('The Ossington Melt', 16.95)">+ Add $16.95</button>
+        <div class="hero-media" data-reveal>
+          <div class="hero-photo-wrap">
+            <img src="../assets/frankies-diner-1.jpg" alt="Bacon cheeseburger with crispy onion strings and fries on a diner table" width="941" height="1440" fetchpriority="high">
+            <div class="hero-float">
+              <div>
+                <div class="hero-float-title">Chicken Club and Chip Truck Fries</div>
+                <div class="hero-float-sub">The most ordered plate on the menu</div>
+              </div>
+              <span class="hero-float-tag">M6J 1G8</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="save-strip">
-      Order takeout directly through Frankie's for menu-board prices &amp; piping-hot pickup at 994 Queen St. W — no third-party markup, no PDF zooming required.
-    </div>
+    <section class="quick-strip" aria-label="Diner essentials">
+      <div class="container quick-grid">
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="quick-label">Find the booth</div>
+            <div class="quick-val">994 Queen St. W, Toronto M6J 1G8</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="quick-label">Hours</div>
+            <div class="quick-val">Mon to Thu 9:30am to 7pm · Fri 9:30am to 8pm</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="quick-label">Call the counter</div>
+            <div class="quick-val"><a href="tel:+14165881936">(416) 588-1936</a></div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <div>
+            <div class="quick-label">Good to know</div>
+            <div class="quick-val">Takeout, booths and counter seats</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="menu">
-      <div class="sec-top">
-        <div>
-          <p class="sec-label">No PDF Needed · Mobile-Ready Menu</p>
-          <h2>Frankie's Classics</h2>
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">Frankie's Classics</span>
+            <h2 class="section-title">The menu regulars already know by heart</h2>
+            <p class="section-desc">Prices are the same here as on the board inside. Build a takeout bag, pay at the counter, and it comes out hot in about fifteen minutes.</p>
+          </div>
         </div>
-        <div class="cat-bar">
-          <button class="cbtn active" onclick="showCat('all', this)">All Favorites</button>
-          <button class="cbtn" onclick="showCat('breakfast', this)">All-Day Breakfast</button>
-          <button class="cbtn" onclick="showCat('griddle', this)">Burgers &amp; Melts</button>
-          <button class="cbtn" onclick="showCat('plates', this)">Salads, Mains &amp; Shakes</button>
+
+        <div class="filter-bar" role="tablist" aria-label="Menu categories">
+          <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Favourites</button>
+          <button type="button" class="filter-tab" data-filter="breakfast" role="tab" aria-selected="false">All Day Breakfast</button>
+          <button type="button" class="filter-tab" data-filter="mains" role="tab" aria-selected="false">Burgers &amp; Melts</button>
+          <button type="button" class="filter-tab" data-filter="supper" role="tab" aria-selected="false">Salads, Mains &amp; Shakes</button>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-cat="breakfast">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Frankie's Original Breakfast</h3>
+                <span class="menu-price">$14.95</span>
+              </div>
+              <p class="menu-desc">Three eggs any style with bacon, sausage or ham, home fries that are crisp on the outside and soft in the middle, and buttered toast.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Most Ordered</span></div>
+              <div data-slot="fr1" data-name="Original Breakfast" data-price="14.95"><button type="button" class="add-btn" data-add="fr1" data-name="Original Breakfast" data-price="14.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="breakfast">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Big Breakfast or Caveman Omelette</h3>
+                <span class="menu-price">$17.95</span>
+              </div>
+              <p class="menu-desc">Either the loaded Big Breakfast platter or the omelette built for people who want bacon, sausage and ham all in one go.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Hungry Portion</span></div>
+              <div data-slot="fr2" data-name="Big Breakfast or Caveman Omelette" data-price="17.95"><button type="button" class="add-btn" data-add="fr2" data-name="Big Breakfast or Caveman Omelette" data-price="17.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="breakfast">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Eggs Benedict</h3>
+                <span class="menu-price">$18.95</span>
+              </div>
+              <p class="menu-desc">Poached eggs and hollandaise on a toasted English muffin with home fries. Choose classic, smoked salmon or pulled pork.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Weekend Brunch</span></div>
+              <div data-slot="fr3" data-name="Eggs Benedict" data-price="18.95"><button type="button" class="add-btn" data-add="fr3" data-name="Eggs Benedict" data-price="18.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="breakfast">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Pancakes, French Toast or Waffles</h3>
+                <span class="menu-price">$11.95</span>
+              </div>
+              <p class="menu-desc">Griddled to order and sent out with butter and syrup. Add bacon or sausage on the side for a few dollars more.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Kids Love It</span></div>
+              <div data-slot="fr4" data-name="Pancakes, French Toast or Waffles" data-price="11.95"><button type="button" class="add-btn" data-add="fr4" data-name="Pancakes, French Toast or Waffles" data-price="11.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="mains">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">The Ossington</h3>
+                <span class="menu-price">$16.95</span>
+              </div>
+              <p class="menu-desc">Named for the next street over. Melted aged cheddar and sweet caramelised onions between two slices of grilled rye. Bun swap on request.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Queen West Icon</span></div>
+              <div data-slot="fr5" data-name="The Ossington" data-price="16.95"><button type="button" class="add-btn" data-add="fr5" data-name="The Ossington" data-price="16.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="mains">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Famous Chicken Club Platter</h3>
+                <span class="menu-price">$13.75</span>
+              </div>
+              <p class="menu-desc">Triple decker, cut in quarters, stacked high with chicken and bacon. Comes with homemade chip truck fries and creamy coleslaw.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Number One Seller</span></div>
+              <div data-slot="fr6" data-name="Chicken Club Platter" data-price="13.75"><button type="button" class="add-btn" data-add="fr6" data-name="Chicken Club Platter" data-price="13.75">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="mains">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Cheddar Jalapeño Burger or Reuben</h3>
+                <span class="menu-price">$16.95</span>
+              </div>
+              <p class="menu-desc">House made patty with fresh cut fries, or the pressed Reuben with corned beef, sauerkraut and Swiss. Both come off the same flat top.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">House Made</span></div>
+              <div data-slot="fr7" data-name="Burger or Reuben" data-price="16.95"><button type="button" class="add-btn" data-add="fr7" data-name="Burger or Reuben" data-price="16.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="supper">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Hollywood Cobb Salad</h3>
+                <span class="menu-price">$17.95</span>
+              </div>
+              <p class="menu-desc">Chicken included and never an upcharge. Crisp bacon, avocado, cucumber, tomato, red onion and blue cheese or cheddar on top.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Best Value</span></div>
+              <div data-slot="fr8" data-name="Hollywood Cobb Salad" data-price="17.95"><button type="button" class="add-btn" data-add="fr8" data-name="Hollywood Cobb Salad" data-price="17.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="supper">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Fish and Chips or Chicken Souvlaki</h3>
+                <span class="menu-price">$19.95</span>
+              </div>
+              <p class="menu-desc">Beer battered fish with homemade fries, or grilled chicken souvlaki with Greek salad, rice or warm pita. Both are regular dinner orders.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Dinner Staple</span></div>
+              <div data-slot="fr9" data-name="Fish and Chips or Souvlaki" data-price="19.95"><button type="button" class="add-btn" data-add="fr9" data-name="Fish and Chips or Souvlaki" data-price="19.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="supper">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Old School Milkshake</h3>
+                <span class="menu-price">$6.95</span>
+              </div>
+              <p class="menu-desc">Strawberry, chocolate or vanilla, spun thick in the steel cup. Diner coffee is bottomless if you are staying in a booth.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Must Order</span></div>
+              <div data-slot="fr10" data-name="Old School Milkshake" data-price="6.95"><button type="button" class="add-btn" data-add="fr10" data-name="Old School Milkshake" data-price="6.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="breakfast">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Buttermilk Pancake Stack with Bacon</h3>
+                <span class="menu-price">$15.50</span>
+              </div>
+              <p class="menu-desc">Three thick pancakes, crisp bacon laid across the top, butter and warm syrup on the side. A proper Queen West Sunday morning.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Sunday Regular</span></div>
+              <div data-slot="fr11" data-name="Pancake Stack with Bacon" data-price="15.50"><button type="button" class="add-btn" data-add="fr11" data-name="Pancake Stack with Bacon" data-price="15.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="mains">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Breakfast Platter for the Crew</h3>
+                <span class="menu-price">$74.00</span>
+              </div>
+              <p class="menu-desc">Feeds four to five. Eggs, bacon, sausage, home fries, toast and a stack of pancakes boxed up for a shoot day or an early meeting.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Group Order</span></div>
+              <div data-slot="fr12" data-name="Breakfast Platter for the Crew" data-price="74.00"><button type="button" class="add-btn" data-add="fr12" data-name="Breakfast Platter for the Crew" data-price="74.00">+ Add</button></div>
+            </div>
+          </article>
         </div>
       </div>
-
-      <div class="menu-board">
-        <article class="dish" data-cat="breakfast">
-          <div>
-            <div class="dish-head"><h3>Frankie's Original Breakfast</h3><span class="dish-price">$14.95</span></div>
-            <p>3 eggs any style with your choice of crispy bacon, sausage, or ham, served with golden crispy home fries and buttered toast.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">95% Thumbs Up</span><button class="cbtn" onclick="addDish('Frankies Original Breakfast', 14.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="breakfast">
-          <div>
-            <div class="dish-head"><h3>Frankie's Big Breakfast &amp; Caveman Omelette</h3><span class="dish-price">$17.95</span></div>
-            <p>Go all-in with our loaded Big Breakfast platter or the meat-lover's Caveman Omelette packed with bacon, sausage, and ham.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Hungry Favourite</span><button class="cbtn" onclick="addDish('Frankies Big Breakfast', 17.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="breakfast">
-          <div>
-            <div class="dish-head"><h3>Eggs Benedict (Classic, Smoked Salmon or Pulled Pork)</h3><span class="dish-price">$18.95</span></div>
-            <p>Poached eggs &amp; velvety hollandaise over toasted English muffin, served with our crispy-outside, fluffy-inside home fries.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Weekend Brunch Hit</span><button class="cbtn" onclick="addDish('Eggs Benedict', 18.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="breakfast">
-          <div>
-            <div class="dish-head"><h3>Fluffy Pancakes, French Toast or Waffles</h3><span class="dish-price">$11.95</span></div>
-            <p>Griddled golden to order and served hot off the flat-top with butter and syrup. Add bacon or sausage on the side.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Griddle Classic</span><button class="cbtn" onclick="addDish('Buttermilk Pancakes Stack', 11.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="griddle">
-          <div>
-            <div class="dish-head"><h3>The Ossington</h3><span class="dish-price">$16.95</span></div>
-            <p>A classic named for our neighbouring street—oozing with melted aged cheddar and sweet caramelized onions on two slices of grilled rye (bun sub on request).</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Queen West Icon</span><button class="cbtn" onclick="addDish('The Ossington', 16.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="griddle">
-          <div>
-            <div class="dish-head"><h3>Famous Chicken Club Platter</h3><span class="dish-price">$13.75</span></div>
-            <p>100% customer-rated triple-decker club stacked high and served with homemade chip-truck fries and creamy coleslaw.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">#1 Most Ordered</span><button class="cbtn" onclick="addDish('Chicken Club Platter', 13.75)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="griddle">
-          <div>
-            <div class="dish-head"><h3>Homemade Cheddar Jalapeño Burger or Reuben</h3><span class="dish-price">$16.95</span></div>
-            <p>Juicy house-made diner burger with fresh-cut fries, or our stacked hot Reuben sandwich pressed to perfection.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">House-Made Burger</span><button class="cbtn" onclick="addDish('Cheddar Jalapeno Burger & Fries', 16.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="plates">
-          <div>
-            <div class="dish-head"><h3>Frankie's Hollywood Cobb Salad</h3><span class="dish-price">$17.95</span></div>
-            <p>Chicken included (never an upcharge!), crispy bacon, avocado, cucumber, tomato, red onion &amp; your choice of blue cheese or cheddar.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Best Value on Queen W</span><button class="cbtn" onclick="addDish('Hollywood Cobb Salad', 17.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="plates">
-          <div>
-            <div class="dish-head"><h3>Golden Fish &amp; Chips or Chicken Souvlaki</h3><span class="dish-price">$19.95</span></div>
-            <p>Crispy battered fish &amp; homemade fries, or tender grilled chicken souvlaki served with Greek salad, rice, or warm pita.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Dinner Staple</span><button class="cbtn" onclick="addDish('Fish & Chips Platter', 19.95)">+ Add</button></div>
-        </article>
-
-        <article class="dish" data-cat="plates">
-          <div>
-            <div class="dish-head"><h3>Old-School Diner Milkshakes</h3><span class="dish-price">$6.95</span></div>
-            <p>Thick strawberry, chocolate, or vanilla shakes spun the classic way, plus bottomless hot diner coffee.</p>
-          </div>
-          <div class="dish-foot"><span class="stamp">Must-Order Shake</span><button class="cbtn" onclick="addDish('Classic Strawberry Milkshake', 6.95)">+ Add</button></div>
-        </article>
-      </div>
-      <p style="font-size:0.8rem;color:var(--muted);margin-top:16px;">* Prices subject to change — synced to your exact in-house menu board before going live.</p>
     </section>
 
-    <section class="section" id="reviews" style="padding-top:10px;">
-      <div class="sec-top">
-        <div>
-          <p class="sec-label">Nearly Five Decades on Queen West</p>
-          <h2>What Toronto Regulars Say</h2>
+    <section class="contrast-band" id="groups">
+      <div class="container split-grid">
+        <div class="feature-photo" data-reveal>
+          <img src="../assets/frankies-diner-2.jpg" alt="Hand pouring maple syrup over a stack of pancakes with fresh berries" width="1152" height="1440" loading="lazy">
         </div>
-      </div>
-      <div class="reviews-row">
-        <div class="rev">
-          <div style="color:var(--mustard);">★★★★★</div>
-          <p>“We go around the city looking for the best Cobb salad and we found it—with chicken included and still under $18. Best Cobb we’ve ever had.”</p>
-          <small>— Queen West Regular</small>
-        </div>
-        <div class="rev">
-          <div style="color:var(--mustard);">★★★★★</div>
-          <p>“Frankie doesn’t mess around! The Chicken Club and homemade chip-truck fries are out of this world. Generous portions, hot coffee, fair prices.”</p>
-          <small>— Verified Toronto Diner</small>
-        </div>
-        <div class="rev">
-          <div style="color:var(--mustard);">★★★★★</div>
-          <p>“Our go-to neighbourhood diner in the West End. Hot sauce on every table, crispy hash browns with a soft centre, and we bring all our out-of-town friends here.”</p>
-          <small>— West End Local</small>
+        <div data-reveal>
+          <span class="section-kicker">Big Tables &amp; Crew Orders</span>
+          <h2 class="section-title">Brunch for eight or breakfast for a film crew</h2>
+          <p class="section-desc">Queen West studios, offices and families have been calling ahead here for years. Give us a heads up and we will hold the back tables or have the boxes stacked and ready at the door.</p>
+          <ul class="check-list">
+            <li>
+              <span class="check-badge">1</span>
+              <div>
+                <strong>Weekend Brunch Groups</strong>
+                <span>Six or more for Saturday and Sunday. We will set the tables and take drink orders before you sit down.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">2</span>
+              <div>
+                <strong>Production and Office Breakfast</strong>
+                <span>Platters of eggs, pancakes, bacon and home fries packed to travel, with coffee in urns. Early pickups arranged.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">3</span>
+              <div>
+                <strong>Direct Takeout, No App Fees</strong>
+                <span>Order through this page or call the counter. The full amount stays with the diner instead of a delivery company.</span>
+              </div>
+            </li>
+          </ul>
+          <a href="#visit" class="btn btn-primary">Plan a Group Visit</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="visit" style="padding-top:10px;">
-      <div class="visit-panel">
-        <div>
-          <p class="sec-label" style="color:#F2B84B;">One Clear Schedule · Open 7 Days</p>
-          <h2>Hours &amp; Location</h2>
-          <p style="color:rgba(250,244,232,0.78);margin:10px 0 18px;">994 Queen Street West, Toronto, ON M6J 1G8 · (416) 588-1936</p>
-          <div class="h-line"><span>Monday – Thursday</span><strong>9:30 AM – 7:00 PM</strong></div>
-          <div class="h-line"><span>Friday</span><strong>9:30 AM – 8:00 PM</strong></div>
-          <div class="h-line"><span>Saturday</span><strong>8:30 AM – 8:00 PM</strong></div>
-          <div class="h-line"><span>Sunday</span><strong>8:30 AM – 4:30 PM</strong></div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
-            <a href="https://maps.google.com/?q=Frankies+Diner+994+Queen+St+W+Toronto+ON+M6J+1G8" target="_blank" rel="noopener" class="btn btn-red">Get Directions</a>
-            <a href="mailto:info@frankiesdiner.ca" class="btn btn-line">Email Us</a>
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">Nearly Five Decades on Queen West</span>
+            <h2 class="section-title">What Toronto regulars say</h2>
           </div>
         </div>
-        <form class="group-form" onsubmit="event.preventDefault();document.getElementById('grpOk').style.display='block'">
-          <h3 style="font-size:1.35rem;">Large Takeout, Film Crew or Brunch Group?</h3>
-          <p style="font-size:0.86rem;color:rgba(255,255,255,0.72);">Bringing a group of 6+ or ordering breakfast platters for your Queen West office or production crew? Drop us a quick heads-up.</p>
-          <input type="text" required placeholder="Your name" />
-          <input type="text" required placeholder="Phone or email" />
-          <select required>
-            <option value="">Select enquiry type</option>
-            <option>Weekend Brunch Group (6+ guests)</option>
-            <option>Office / Studio Crew Breakfast Order</option>
-            <option>Catering or General Question</option>
-          </select>
-          <input type="text" placeholder="Date, time &amp; headcount" />
-          <button type="submit" class="btn btn-red" style="width:100%;">Send to Frankie's</button>
-          <div class="ok-banner" id="grpOk">Preview Demo: Sends straight to info@frankiesdiner.ca so you win group tables &amp; large Queen West office takeout directly!</div>
-        </form>
+        <div class="reviews-grid">
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"We go around the city looking for the best Cobb salad and we found it here. Chicken included and still under eighteen dollars. Best one we have had."</p>
+            </div>
+            <div class="review-meta">Google Review · Queen West regular</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Frankie doesn't mess around. The chicken club and homemade chip truck fries are out of this world. Generous portions, hot coffee, fair prices."</p>
+            </div>
+            <div class="review-meta">Verified diner review · Toronto</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Our go to neighbourhood diner in the west end. Hot sauce on every table, hash browns crispy outside and soft in the middle, and we bring every out of town friend here."</p>
+            </div>
+            <div class="review-meta">West end local · 4.5 out of 5 overall</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="visit">
+      <div class="container action-grid">
+        <div class="form-card" data-reveal>
+          <span class="section-kicker">Groups &amp; Catering</span>
+          <h3>Heads up for a big table or worker</h3>
+          <p class="form-sub">Let us know the date and how many are coming. We will confirm the table or the pickup time by phone or email.</p>
+          <form id="inquiryForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="fr-name">Your name</label>
+                <input id="fr-name" name="name" type="text" placeholder="Dana Whitfield" required>
+              </div>
+              <div class="field">
+                <label for="fr-contact">Phone or email</label>
+                <input id="fr-contact" name="contact" type="text" placeholder="dana@example.ca" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="fr-type">What do you need?</label>
+                <select id="fr-type" name="type">
+                  <option>Weekend Brunch Group (6 or more)</option>
+                  <option>Production or Office Breakfast Order</option>
+                  <option>Large Takeout Pickup</option>
+                  <option>General Question</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="fr-date">Date needed</label>
+                <input id="fr-date" name="date" type="date" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fr-notes">How many people, time and any notes</label>
+              <textarea id="fr-notes" name="notes" placeholder="Ten of us for Saturday at 10:30am, two vegetarians, and we would love the back booths if they are free..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send to Frankie's</button>
+            <div class="confirm-box" id="inquiryConfirm" hidden></div>
+          </form>
+        </div>
+
+        <aside class="visit-card" data-reveal>
+          <span class="section-kicker">Hours &amp; Location</span>
+          <h3>994 Queen Street West</h3>
+          <div class="visit-detail">
+            <div><strong>Address:</strong> 994 Queen St. W, Toronto, ON M6J 1G8</div>
+            <div><strong>Phone:</strong> <a href="tel:+14165881936">(416) 588-1936</a></div>
+            <div><strong>Email:</strong> <a href="mailto:info@frankiesdiner.ca">info@frankiesdiner.ca</a></div>
+            <div><strong>Getting here:</strong> A short walk from Ossington station, with street parking on Queen and side streets.</div>
+          </div>
+          <ul class="hours-list">
+            <li><span>Monday to Thursday</span><span>9:30am - 7:00pm</span></li>
+            <li><span>Friday</span><span>9:30am - 8:00pm</span></li>
+            <li><span>Saturday</span><span>8:30am - 8:00pm</span></li>
+            <li><span>Sunday</span><span>8:30am - 4:30pm</span></li>
+          </ul>
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="https://maps.google.com/?q=994+Queen+St+W+Toronto+ON+M6J+1G8" target="_blank" rel="noopener">Get Directions</a>
+            <a class="btn btn-secondary" href="tel:+14165881936">Call the Diner</a>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p><strong>Frankie's Diner</strong> · 994 Queen Street W, Toronto, ON M6J 1G8 · (416) 588-1936 · info@frankiesdiner.ca</p>
-  </footer>
-
-  <div class="drawer-bg" id="orderDrawer" onclick="if(event.target===this)openOrder(false)">
-    <div class="drawer">
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <h3>Direct Takeout Bag</h3>
-          <button onclick="openOrder(false)" style="background:none;font-size:1.5rem;">&times;</button>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div class="brand">
+          <span class="brand-mark">F</span>
+          <span class="brand-text">
+            <span class="brand-name">Frankie's Diner</span>
+            <span class="brand-sub">994 Queen Street W, Toronto, ON M6J 1G8 · (416) 588-1936</span>
+          </span>
         </div>
-        <p style="font-size:0.84rem;color:var(--muted);margin-bottom:16px;">Pickup at 994 Queen St. W · Ready hot in ~15 mins · 100% goes to Frankie's.</p>
-        <div id="orderItems" style="font-size:0.9rem;color:var(--muted);">Add your favourite breakfast, club, or burger to try direct ordering.</div>
+        <div class="footer-links">
+          <a href="#menu">Menu</a>
+          <a href="#groups">Groups</a>
+          <a href="#reviews">Regulars</a>
+          <a href="#visit">Visit</a>
+        </div>
       </div>
-      <div style="border-top:1.5px solid var(--ink);padding-top:16px;">
-        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;margin-bottom:14px;">
-          <span>Subtotal (CAD)</span><span id="orderTotal">$0.00</span>
-        </div>
-        <button class="btn btn-red" style="width:100%;" onclick="document.getElementById('ordOk').style.display='block'">Place Direct Pickup Order</button>
-        <div class="ok-banner" id="ordOk">Preview Demo: Connects straight to your POS/printer so regulars order directly through frankiesdiner.ca instead of losing 20–30% to delivery apps!</div>
+      <div class="footer-copy">
+        <span>© Frankie's Diner · Queen and Ossington, Toronto</span>
+        <span>Open seven days · Breakfast all day</span>
       </div>
     </div>
+  </footer>
+
+  <div class="mobile-dock" aria-label="Quick actions">
+    <button type="button" class="btn btn-primary" data-open-bag>Order (<span data-bag-count>0</span>)</button>
+    <a href="tel:+14165881936" class="btn btn-secondary">Call Diner</a>
   </div>
 
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="bagDrawer" aria-hidden="true" aria-label="Takeout bag">
+    <div class="drawer-head">
+      <h3>Direct Takeout Bag</h3>
+      <button type="button" class="close-btn" data-close-bag aria-label="Close bag">×</button>
+    </div>
+    <div class="drawer-body" id="bagItems"></div>
+    <form class="drawer-foot" id="pickupForm" hidden>
+      <div id="drawerFoot">
+        <div class="subtotal-row"><span>Subtotal (CAD)</span><span id="bagSubtotal">$0.00</span></div>
+        <div class="drawer-fields">
+          <input type="text" name="customer" placeholder="Your name" required aria-label="Your name">
+          <select name="pickup_time" aria-label="Pickup time">
+            <option>Ready in 15 mins</option>
+            <option>Ready in 25 mins</option>
+            <option>Breakfast pickup</option>
+            <option>Dinner pickup</option>
+          </select>
+        </div>
+        <input type="text" class="drawer-note" name="notes" placeholder="Eggs how you like them, sauces, allergies" aria-label="Order notes">
+        <button type="submit" class="btn btn-primary" style="width:100%">Place Takeout Order</button>
+      </div>
+    </form>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    const order = [];
-    function showCat(cat, btn) {
-      document.querySelectorAll('.cat-bar .cbtn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.dish').forEach(d => {
-        d.style.display = (cat === 'all' || d.dataset.cat === cat) ? 'flex' : 'none';
-      });
-    }
-    function addDish(name, price) {
-      order.push({ name, price });
-      document.getElementById('orderCount').textContent = order.length;
-      document.getElementById('orderItems').innerHTML = order.map(x =>
-        `<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);color:var(--ink);"><span>${x.name}</span><strong>$${x.price.toFixed(2)}</strong></div>`
-      ).join('');
-      document.getElementById('orderTotal').textContent = '$' + order.reduce((a, b) => a + b.price, 0).toFixed(2);
-      openOrder(true);
-    }
-    function openOrder(v) { document.getElementById('orderDrawer').classList.toggle('open', v); }
+    window.SHOP_CONFIG = {
+      slug: 'frankies-diner',
+      currency: '$',
+      tz: 'America/Toronto',
+      fallbackHours: 'Open seven days from 9:30am',
+      hours: { 0:[510,990], 1:[570,1140], 2:[570,1140], 3:[570,1140], 4:[570,1140], 5:[570,1200], 6:[510,1200] }
+    };
   </script>
+  <script src="../assets/studio-core.js"></script>
 </body>
 </html>

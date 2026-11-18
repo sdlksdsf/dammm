@@ -1,966 +1,648 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cannon Coffee — Specialty Coffee & Local Eats in South Austin, TX</title>
-  <meta name="description" content="South Austin's neighborhood specialty coffee shop at 1901 W William Cannon Dr. Locally roasted Cuvée espresso, housemade Ube Lavender Lattes, breakfast tacos & local Austin pastries." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cannon Coffee | Specialty Coffee &amp; Local Bakes, South Austin TX</title>
+  <meta name="description" content="Neighborhood coffee shop on W. William Cannon in South Austin. Cuvée espresso, housemade syrups, Mill-King milk, breakfast tacos, Moonlight Bakery pastries and Misty Morning gluten free bakes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/studio-core.css">
   <style>
-    :root {
-      --bg: #FAF5EE;
-      --surface: #FFFDF9;
-      --surface-warm: #F2E8DA;
-      --espresso: #1F1510;
-      --roast: #4A3428;
-      --muted: #6E5A4E;
-      --terracotta: #B8562E;
-      --terracotta-dark: #96421F;
-      --ube: #7B5E8B;
-      --ube-soft: #F1EAF5;
-      --sage: #3D6348;
-      --border: rgba(31, 21, 16, 0.1);
-      --radius: 16px;
-      --shadow: 0 18px 45px rgba(31, 21, 16, 0.08);
+    :root, [data-theme="light"] {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --bg: #faf5ee;
+      --bg-alt: #f2e8da;
+      --surface: #fffdf9;
+      --surface-2: #f4ece1;
+      --header-bg: rgba(250, 245, 238, 0.9);
+      --float-bg: rgba(255, 253, 249, 0.94);
+      --text: #1f1510;
+      --text-2: #4a3428;
+      --text-3: #6e5a4e;
+      --border: rgba(31, 21, 16, 0.11);
+      --border-strong: rgba(31, 21, 16, 0.22);
+      --accent: #b8562e;
+      --accent-strong: #96421f;
+      --accent-text: #a64a24;
+      --accent-soft: rgba(184, 86, 46, 0.11);
+      --accent-border: rgba(184, 86, 46, 0.28);
+      --accent-glow: rgba(184, 86, 46, 0.28);
+      --on-accent: #ffffff;
+      --accent-2: #7b5e8b;
+      --accent-2-soft: rgba(123, 94, 139, 0.13);
+      --accent-2-text: #6a4f7a;
+      --accent-2-border: rgba(123, 94, 139, 0.3);
+      --hero-orb-1: rgba(184, 86, 46, 0.14);
+      --hero-orb-2: rgba(123, 94, 139, 0.13);
+      --contrast-bg: #1f1510;
+      --contrast-surface: rgba(255, 255, 255, 0.06);
+      --contrast-text: #faf5ee;
+      --contrast-text-2: #d8c9bd;
+      --contrast-border: rgba(255, 255, 255, 0.13);
+      --contrast-accent: #e89a72;
+      --hero-ratio: 4 / 4.3;
+      --feature-ratio: 4 / 3.1;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--espresso);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Fraunces', Georgia, serif;
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; }
-
-    /* Preview Banner */
-    .preview-bar {
-      background: var(--espresso);
-      color: #F6EFE6;
-      font-size: 0.82rem;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .preview-bar span { opacity: 0.9; }
-    .preview-bar a {
-      background: var(--terracotta);
-      color: #fff;
-      padding: 5px 13px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.78rem;
-      transition: background 0.2s;
-    }
-    .preview-bar a:hover { background: var(--terracotta-dark); }
-    .preview-close {
-      background: transparent;
-      color: rgba(255,255,255,0.65);
-      font-size: 1rem;
-      padding: 0 4px;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(250, 245, 238, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-name {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 1.38rem;
-      letter-spacing: -0.02em;
-    }
-    .brand-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    nav { display: flex; gap: 28px; align-items: center; }
-    nav a {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--roast);
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--terracotta); }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: transform 0.18s, background 0.2s, box-shadow 0.2s;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-primary {
-      background: var(--terracotta);
-      color: #fff;
-      box-shadow: 0 8px 22px rgba(184, 86, 46, 0.26);
-    }
-    .btn-primary:hover { background: var(--terracotta-dark); }
-    .btn-outline {
-      background: transparent;
-      color: var(--espresso);
-      border: 1.5px solid rgba(31, 21, 16, 0.22);
-    }
-    .btn-outline:hover { background: var(--surface-warm); }
-    .bag-count {
-      background: #fff;
-      color: var(--terracotta);
-      border-radius: 999px;
-      padding: 1px 7px;
-      font-size: 0.76rem;
-      font-weight: 700;
-    }
-
-    /* Hero */
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 24px 72px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--roast);
-      margin-bottom: 22px;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--sage);
-      box-shadow: 0 0 0 4px rgba(61, 99, 72, 0.16);
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.1rem);
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--espresso);
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--terracotta);
-      font-weight: 400;
-    }
-    .hero-lead {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 510px;
-      margin-bottom: 30px;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-    .hero-meta {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      font-size: 0.86rem;
-      color: var(--roast);
-    }
-    .hero-meta strong { display: block; font-size: 1.05rem; color: var(--espresso); }
-    .hero-visual {
-      position: relative;
-    }
-    .hero-visual img {
-      width: 100%;
-      aspect-ratio: 4 / 3.3;
-      object-fit: cover;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-    }
-    .floating-note {
-      position: absolute;
-      bottom: -18px;
-      left: 22px;
-      right: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 18px;
-      box-shadow: 0 12px 30px rgba(31, 21, 16, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .floating-note small {
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--ube);
-      display: block;
-    }
-    .floating-note strong { font-size: 0.94rem; }
-
-    /* Local Purveyors Strip */
-    .partners-strip {
-      background: var(--surface-warm);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 24px;
-    }
-    .partners-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .partners-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 700;
-      color: var(--muted);
-    }
-    .partner-list {
-      display: flex;
-      gap: 26px;
-      flex-wrap: wrap;
-      font-family: 'Fraunces', serif;
-      font-size: 1.05rem;
-      color: var(--roast);
-    }
-
-    /* Sections */
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 84px 24px;
-    }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
-    }
-    .eyebrow {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 700;
-      color: var(--terracotta);
-      margin-bottom: 10px;
-    }
-    .section-head h2 {
-      font-size: clamp(2rem, 3.6vw, 2.85rem);
-      font-weight: 600;
-    }
-    .tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .tab {
-      padding: 9px 18px;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: var(--roast);
-      transition: all 0.2s;
-    }
-    .tab.active, .tab:hover {
-      background: var(--espresso);
-      color: #fff;
-      border-color: var(--espresso);
-    }
-
-    /* Menu Grid */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 20px;
-    }
-    .menu-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .menu-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(31, 21, 16, 0.06);
-    }
-    .menu-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .menu-card h3 { font-size: 1.22rem; font-weight: 600; }
-    .price {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--terracotta);
-      white-space: nowrap;
-    }
-    .menu-desc { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
-    .menu-foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      padding-top: 12px;
-      border-top: 1px dashed var(--border);
-    }
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--ube-soft);
-      color: var(--ube);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .tag.warm { background: #FCECE5; color: var(--terracotta); }
-    .tag.green { background: #E7F1EA; color: var(--sage); }
-    .add-btn {
-      background: var(--surface-warm);
-      color: var(--espresso);
-      padding: 7px 15px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      transition: background 0.2s, color 0.2s;
-    }
-    .add-btn:hover { background: var(--terracotta); color: #fff; }
-
-    /* Catering / Morning Box Section */
-    .catering-band {
-      background: var(--espresso);
-      color: #FAF5EE;
-      border-radius: 28px;
-      padding: 56px 48px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 44px;
-      align-items: center;
-    }
-    .catering-band h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); margin-bottom: 16px; }
-    .catering-band p { color: rgba(250, 245, 238, 0.78); margin-bottom: 22px; }
-    .perks { list-style: none; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.92rem; }
-    .perks li::before { content: "✦ "; color: #E28B65; }
-    .catering-form {
-      background: #2C1F18;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 28px;
-      display: grid;
-      gap: 13px;
-    }
-    .catering-form h3 { font-size: 1.3rem; margin-bottom: 4px; }
-    .catering-form input, .catering-form select, .catering-form textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-family: inherit;
-      font-size: 0.9rem;
-    }
-    .catering-form select option { color: var(--espresso); }
-    .catering-form input::placeholder, .catering-form textarea::placeholder { color: rgba(255,255,255,0.5); }
-
-    /* Reviews */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .review-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .stars { color: #D4882A; letter-spacing: 2px; font-size: 0.95rem; margin-bottom: 12px; }
-    .review-card blockquote {
-      font-family: 'Fraunces', serif;
-      font-size: 1.05rem;
-      line-height: 1.48;
-      color: var(--espresso);
-      margin-bottom: 16px;
-    }
-    .reviewer { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
-
-    /* Visit & Hours */
-    .visit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 44px;
-    }
-    .hours-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-    .hours-table td {
-      padding: 11px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.94rem;
-    }
-    .hours-table td:last-child { text-align: right; font-weight: 600; }
-    .info-cards { display: grid; gap: 16px; align-content: center; }
-    .info-box {
-      background: var(--bg);
-      border-radius: 14px;
-      padding: 20px 22px;
-    }
-    .info-box small {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--terracotta);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 24px;
-      text-align: center;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    /* Slide-Over Order Drawer */
-    .drawer-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(31, 21, 16, 0.52);
-      z-index: 100;
-      display: none;
-      justify-content: flex-end;
-    }
-    .drawer-backdrop.open { display: flex; }
-    .drawer {
-      background: var(--surface);
-      width: min(430px, 100%);
-      height: 100%;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow-y: auto;
-    }
-    .drawer-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.92rem;
-    }
-    .toast-msg {
-      background: #E7F1EA;
-      color: var(--sage);
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      margin-top: 12px;
-      display: none;
-    }
-
-    @media (max-width: 900px) {
-      nav { display: none; }
-      .hero, .catering-band, .visit-grid, .reviews-grid { grid-template-columns: 1fr; }
-      .catering-band, .visit-grid { padding: 30px 24px; }
-      .floating-note { position: static; margin-top: 12px; }
+    [data-theme="dark"] {
+      --bg: #14100d;
+      --bg-alt: #1d1814;
+      --surface: #241d18;
+      --surface-2: #302620;
+      --header-bg: rgba(20, 16, 13, 0.9);
+      --float-bg: rgba(36, 29, 24, 0.94);
+      --text: #faf5ee;
+      --text-2: #ddcfc4;
+      --text-3: #b3a094;
+      --border: rgba(255, 255, 255, 0.11);
+      --border-strong: rgba(255, 255, 255, 0.23);
+      --accent: #b8562e;
+      --accent-strong: #9c4522;
+      --accent-text: #f0a780;
+      --accent-soft: rgba(240, 167, 128, 0.14);
+      --accent-border: rgba(240, 167, 128, 0.3);
+      --accent-glow: rgba(201, 104, 60, 0.34);
+      --on-accent: #ffffff;
+      --accent-2: #a98bbd;
+      --accent-2-soft: rgba(169, 139, 189, 0.15);
+      --accent-2-text: #c9aede;
+      --accent-2-border: rgba(169, 139, 189, 0.32);
+      --hero-orb-1: rgba(240, 167, 128, 0.17);
+      --hero-orb-2: rgba(169, 139, 189, 0.14);
+      --contrast-bg: #faf5ee;
+      --contrast-surface: #fffdf9;
+      --contrast-text: #1f1510;
+      --contrast-text-2: #4a3428;
+      --contrast-border: rgba(31, 21, 16, 0.12);
+      --contrast-accent: #a64a24;
     }
   </style>
 </head>
 <body>
-  <div class="preview-bar" id="previewBar">
-    <span>Custom website concept designed for <strong>Cannon Coffee (Austin, TX)</strong> by Shayan — every photo, item, price &amp; color can be tailored to your shop.</span>
-    <a href="mailto:shayan44wrgs@gmail.com?subject=Cannon%20Coffee%20Website%20Preview">Claim or Customize</a> <a href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20just%20checked%20out%20the%20website%20preview%20for%20Cannon%20Coffee" target="_blank" rel="noopener">WhatsApp +92 312 4228811</a>
-    <button class="preview-close" onclick="document.getElementById('previewBar').remove()" aria-label="Hide banner">&times;</button>
+  <div class="proto-bar" role="region" aria-label="Prototype notice">
+    <div class="proto-inner">
+      <div class="proto-msg">
+        <span class="proto-badge">Prototype</span>
+        <span>Built for <strong>Cannon Coffee</strong> by Shayan. Anything here can be customized for your shop.</span>
+      </div>
+      <div class="proto-contacts">
+        <a class="proto-chip" href="mailto:shayan44wrgs@gmail.com?subject=Cannon%20Coffee%20Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></svg>
+          shayan44wrgs@gmail.com
+        </a>
+        <a class="proto-chip proto-chip--wa" href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20checked%20the%20Cannon%20Coffee%20website%20prototype" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +92 312 4228811
+        </a>
+      </div>
+    </div>
   </div>
 
-  <header>
-    <div class="nav-wrap">
-      <a href="#" class="brand">
-        <span class="brand-name">Cannon Coffee</span>
-        <span class="brand-sub">South Austin · 78745</span>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#top" class="brand">
+        <span class="brand-mark">CC</span>
+        <span class="brand-text">
+          <span class="brand-name">Cannon Coffee</span>
+          <span class="brand-sub">South Austin · W. William Cannon</span>
+        </span>
       </a>
-      <nav>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#menu">Drinks &amp; Eats</a>
-        <a href="#partners">Local Purveyors</a>
-        <a href="#catering">Office Boxes</a>
-        <a href="#reviews">Reviews</a>
+        <a href="#purveyors">Local Makers</a>
+        <a href="#office">Office Boxes</a>
         <a href="#visit">Hours &amp; Location</a>
       </nav>
       <div class="nav-actions">
-        <button class="btn btn-primary" onclick="toggleDrawer(true)">
-          Order Pickup <span class="bag-count" id="bagCount">0</span>
+        <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+          <span class="theme-label">Dark</span>
+        </button>
+        <button type="button" class="bag-btn" data-open-bag>
+          <span class="bag-label">Order Pickup</span>
+          <span class="bag-count" data-bag-count>0</span>
+        </button>
+        <button type="button" class="burger-btn" data-burger aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div>
-        <div class="status-pill">
-          <span class="dot"></span>
-          <span>Mon–Fri 7am–5pm · Sat–Sun 8am–5pm · W. William Cannon</span>
-        </div>
-        <h1>Quality coffee by <em>authentic</em> South Austin people.</h1>
-        <p class="hero-lead">
-          Locally roasted Cuvée espresso, housemade syrups, Mill-King Creamery milk, daily breakfast tacos, and warm pastries from Austin's favorite neighborhood bakeries.
-        </p>
-        <div class="hero-ctas">
-          <a href="#menu" class="btn btn-primary">Order Ahead for Pickup</a>
-          <a href="#visit" class="btn btn-outline">1901 W. William Cannon Dr</a>
-        </div>
-        <div class="hero-meta">
-          <div>
-            <strong>4.5 ★ on Google</strong>
-            170+ neighborhood reviews
-          </div>
-          <div>
-            <strong>Housemade Syrups</strong>
-            Ube lavender, honey &amp; seasonal
-          </div>
-          <div>
-            <strong>Vegan &amp; GF Ready</strong>
-            Plant milks + Misty Morning bakes
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <img src="/assets/cannon-coffee-hero.jpg" alt="Cannon Coffee iced ube lavender latte, honey cortado, sugared cinnamon roll and breakfast taco on oak counter" />
-        <div class="floating-note">
-          <div>
-            <small>Neighborhood Favorite</small>
-            <strong>Iced Ube Lavender Latte + Moonlight Cinnamon Roll</strong>
-          </div>
-          <button class="add-btn" onclick="addItem('Ube Lavender Latte', 5.75)">+ Quick Add</button>
-        </div>
-      </div>
-    </section>
-
-    <div class="partners-strip" id="partners">
-      <div class="partners-inner">
-        <span class="partners-label">Proudly Pouring &amp; Serving Austin Locals</span>
-        <div class="partner-list">
-          <span>Cuvée Coffee Roasters</span>
-          <span>Mill-King Creamery</span>
-          <span>Moonlight Bakery</span>
-          <span>Misty Morning GF</span>
-          <span>Andy K's Donuts</span>
-          <span>Tacodeli</span>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <div class="mobile-nav-list">
+          <a href="#menu">Drinks, Tacos &amp; Bakes</a>
+          <a href="#purveyors">Our Austin Makers</a>
+          <a href="#office">Coffee Totes &amp; Taco Boxes</a>
+          <a href="#visit">Hours, Parking &amp; Phone</a>
         </div>
       </div>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="hero-pills">
+            <span class="eyebrow-pill">Neighborhood Shop in 78745</span>
+            <span class="status-pill" id="liveStatus">
+              <span class="status-dot"></span>
+              <span id="liveStatusText">Mon to Fri 7am to 5pm</span>
+            </span>
+          </div>
+          <h1>Coffee by South Austin people, <span class="accent-word">for South Austin people.</span></h1>
+          <p class="hero-lead">Cuvée espresso, syrups we make in the back, Mill-King milk in the fridge, and breakfast tacos that sell out before nine. Pull up a table with your laptop or grab it to go on your way down William Cannon.</p>
+          <div class="hero-ctas">
+            <a href="#menu" class="btn btn-primary">Order Ahead for Pickup</a>
+            <a href="#office" class="btn btn-secondary">Book an Office Box</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>4.5 / 5</strong>
+              <span>170+ Google reviews</span>
+            </div>
+            <div class="stat-item">
+              <strong>7:00am</strong>
+              <span>Weekday doors and first brews</span>
+            </div>
+            <div class="stat-item">
+              <strong>Locally Made</strong>
+              <span>Cuvée, Mill-King, Moonlight</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media" data-reveal>
+          <div class="hero-photo-wrap">
+            <img src="../assets/cannon-coffee-2.jpg" alt="Overhead view of a latte with leaf art on a wooden tray on a bright orange café table" width="1080" height="1440" fetchpriority="high">
+            <div class="hero-float">
+              <div>
+                <div class="hero-float-title">Iced Ube Lavender Latte</div>
+                <div class="hero-float-sub">House syrup, double shot, oat or Mill-King milk</div>
+              </div>
+              <span class="hero-float-tag">78745</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Coffee shop essentials">
+      <div class="container quick-grid">
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="quick-label">Address</div>
+            <div class="quick-val">1901 W. William Cannon Dr, Suite 165-A</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="quick-label">Hours</div>
+            <div class="quick-val">Mon to Fri 7am to 5pm · Weekends 8am to 5pm</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="quick-label">Call the bar</div>
+            <div class="quick-val"><a href="tel:+15126144215">(512) 614-4215</a></div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></div>
+          <div>
+            <div class="quick-label">In the shop</div>
+            <div class="quick-val">Free Wi-Fi · Patio seats · Lot parking</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="menu">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Skip the Morning Line</p>
-          <h2>Drinks, Tacos &amp; Local Bakes</h2>
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">Skip the Morning Line</span>
+            <h2 class="section-title">Drinks, tacos and bakes from people down the road</h2>
+            <p class="section-desc">Almost everything on the counter comes from a maker within a few miles. Build your order below and it will be waiting when you walk in.</p>
+          </div>
         </div>
-        <div class="tabs" role="tablist">
-          <button class="tab active" onclick="filterMenu('all', this)">All Favorites</button>
-          <button class="tab" onclick="filterMenu('signature', this)">Signature Drinks</button>
-          <button class="tab" onclick="filterMenu('espresso', this)">Espresso &amp; Tea</button>
-          <button class="tab" onclick="filterMenu('food', this)">Tacos &amp; Bakery</button>
+
+        <div class="filter-bar" role="tablist" aria-label="Menu categories">
+          <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Favorites</button>
+          <button type="button" class="filter-tab" data-filter="drinks" role="tab" aria-selected="false">Signature Drinks</button>
+          <button type="button" class="filter-tab" data-filter="coffee" role="tab" aria-selected="false">Espresso &amp; Tea</button>
+          <button type="button" class="filter-tab" data-filter="eats" role="tab" aria-selected="false">Tacos &amp; Bakery</button>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-cat="drinks">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Iced Ube Lavender Latte</h3>
+                <span class="menu-price">$5.75</span>
+              </div>
+              <p class="menu-desc">Velvety ube and our own lavender syrup layered with a double shot and Mill-King or oat milk. Served hot too once the mornings cool down.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Fan Favorite</span></div>
+              <div data-slot="cn1" data-name="Iced Ube Lavender Latte" data-price="5.75"><button type="button" class="add-btn" data-add="cn1" data-name="Iced Ube Lavender Latte" data-price="5.75">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="drinks">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">The Nightmare Before Coffee</h3>
+                <span class="menu-price">$5.50</span>
+              </div>
+              <p class="menu-desc">Slow steeped house cold brew topped with a fresh double shot of Cuvée espresso. Not one to drink at four in the afternoon unless you mean it.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Extra Caffeine</span></div>
+              <div data-slot="cn2" data-name="Nightmare Before Coffee" data-price="5.50"><button type="button" class="add-btn" data-add="cn2" data-name="Nightmare Before Coffee" data-price="5.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="drinks">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Iced Honey Cortado</h3>
+                <span class="menu-price">$4.95</span>
+              </div>
+              <p class="menu-desc">Equal parts espresso and cold milk with a spoon of Texas wildflower honey, poured over ice. Small cup, big following on the neighborhood page.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Regulars' Pick</span></div>
+              <div data-slot="cn3" data-name="Iced Honey Cortado" data-price="4.95"><button type="button" class="add-btn" data-add="cn3" data-name="Iced Honey Cortado" data-price="4.95">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="coffee">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Cappuccino or Latte</h3>
+                <span class="menu-price">$4.75</span>
+              </div>
+              <p class="menu-desc">Cuvée beans pulled to order with micro foamed Mill-King dairy, oat or almond milk. Add any of the house syrups for a dollar.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Oat &amp; Almond</span></div>
+              <div data-slot="cn4" data-name="Cappuccino or Latte" data-price="4.75"><button type="button" class="add-btn" data-add="cn4" data-name="Cappuccino or Latte" data-price="4.75">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="coffee">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">House Cold Brew</h3>
+                <span class="menu-price">$4.50</span>
+              </div>
+              <p class="menu-desc">Steeped in small batches in the shop every day. Low acid, heavy on the chocolate, and clean enough to drink black without thinking about it.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Dairy Free</span></div>
+              <div data-slot="cn5" data-name="House Cold Brew" data-price="4.50"><button type="button" class="add-btn" data-add="cn5" data-name="House Cold Brew" data-price="4.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="coffee">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Matcha or Chai Latte</h3>
+                <span class="menu-price">$5.25</span>
+              </div>
+              <p class="menu-desc">Whisked matcha, spiced chai or a loose leaf botanical tea, hot or iced. A splash of lavender syrup makes the matcha taste like a birthday.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Vegan Friendly</span></div>
+              <div data-slot="cn6" data-name="Matcha or Chai Latte" data-price="5.25"><button type="button" class="add-btn" data-add="cn6" data-name="Matcha or Chai Latte" data-price="5.25">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="eats">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Daily Breakfast Tacos</h3>
+                <span class="menu-price">$4.25</span>
+              </div>
+              <p class="menu-desc">Warm tacos delivered in every morning with meat, veggie and vegan fillings. We sell out most weekdays, so a pre-order is not a bad idea.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Until Sold Out</span></div>
+              <div data-slot="cn7" data-name="Breakfast Taco" data-price="4.25"><button type="button" class="add-btn" data-add="cn7" data-name="Breakfast Taco" data-price="4.25">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="eats">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Moonlight Bakery Pastry</h3>
+                <span class="menu-price">$4.50</span>
+              </div>
+              <p class="menu-desc">Sugared cinnamon rolls, almond croissants, seasonal kolaches and muffins from Moonlight, dropped off Monday through Saturday mornings.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Mon to Sat</span></div>
+              <div data-slot="cn8" data-name="Moonlight Pastry" data-price="4.50"><button type="button" class="add-btn" data-add="cn8" data-name="Moonlight Pastry" data-price="4.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="eats">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Misty Morning Gluten Free Bake</h3>
+                <span class="menu-price">$4.50</span>
+              </div>
+              <p class="menu-desc">Banana bread slices, muffins and soft baked cookies made right here in Austin in a dedicated gluten free kitchen. Kept separate from the pastry case.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Gluten Free</span></div>
+              <div data-slot="cn9" data-name="Gluten Free Bake" data-price="4.50"><button type="button" class="add-btn" data-add="cn9" data-name="Gluten Free Bake" data-price="4.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="eats">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Andy K's Donut or Apple Fritter</h3>
+                <span class="menu-price">$4.25</span>
+              </div>
+              <p class="menu-desc">Saturday and Sunday only. Small batch glazed donuts and crisp apple fritters from Andy K's, gone by late morning most weekends.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Weekends Only</span></div>
+              <div data-slot="cn10" data-name="Donut or Apple Fritter" data-price="4.25"><button type="button" class="add-btn" data-add="cn10" data-name="Donut or Apple Fritter" data-price="4.25">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="eats">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">The Serpico Grab and Go Sandwich</h3>
+                <span class="menu-price">$9.50</span>
+              </div>
+              <p class="menu-desc">A stacked deli sandwich from Proof Liquor and Deli, kept cold in the case. Good for a fast lunch or an afternoon at the window table.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Lunch Staple</span></div>
+              <div data-slot="cn11" data-name="The Serpico Sandwich" data-price="9.50"><button type="button" class="add-btn" data-add="cn11" data-name="The Serpico Sandwich" data-price="9.50">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="drinks">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Bag of Cuvée Beans to Take Home</h3>
+                <span class="menu-price">$18.00</span>
+              </div>
+              <p class="menu-desc">Twelve ounces of the espresso we pull every morning, roasted here in Austin. We will grind it for your machine or leave the beans whole.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Whole Bean</span></div>
+              <div data-slot="cn12" data-name="Bag of Cuvée Beans" data-price="18.00"><button type="button" class="add-btn" data-add="cn12" data-name="Bag of Cuvée Beans" data-price="18.00">+ Add</button></div>
+            </div>
+          </article>
         </div>
       </div>
-
-      <div class="menu-grid" id="menuGrid">
-        <article class="menu-card" data-cat="signature">
-          <div>
-            <div class="menu-top">
-              <h3>Ube Lavender Latte</h3>
-              <span class="price">$5.75</span>
-            </div>
-            <p class="menu-desc">Velvety ube and our housemade floral lavender syrup layered with double-shot espresso and local Mill-King or oat milk. Hot or iced.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag">Fan Favorite</span>
-            <button class="add-btn" onclick="addItem('Ube Lavender Latte', 5.75)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="signature">
-          <div>
-            <div class="menu-top">
-              <h3>The Nightmare Before Coffee</h3>
-              <span class="price">$5.50</span>
-            </div>
-            <p class="menu-desc">Smooth, slow-steeped housemade cold brew supercharged with a fresh double shot of Cuvée espresso for serious morning fuel.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag warm">High Caffeine</span>
-            <button class="add-btn" onclick="addItem('Nightmare Before Coffee', 5.50)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="signature">
-          <div>
-            <div class="menu-top">
-              <h3>Iced Honey Cortado</h3>
-              <span class="price">$4.95</span>
-            </div>
-            <p class="menu-desc">Equal parts rich espresso and silky cold milk lightly kissed with raw Texas wildflower honey over ice.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag">Regulars' Pick</span>
-            <button class="add-btn" onclick="addItem('Iced Honey Cortado', 4.95)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="espresso">
-          <div>
-            <div class="menu-top">
-              <h3>Classic Cappuccino or Latte</h3>
-              <span class="price">$4.75</span>
-            </div>
-            <p class="menu-desc">Locally roasted espresso with micro-foamed Mill-King dairy, oat, or almond milk. Add any housemade sauce or seasonal syrup.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag green">Vegan Milk Option</span>
-            <button class="add-btn" onclick="addItem('Cappuccino / Latte', 4.75)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="espresso">
-          <div>
-            <div class="menu-top">
-              <h3>House Cold Brew</h3>
-              <span class="price">$4.50</span>
-            </div>
-            <p class="menu-desc">Small-batch steeped in-house daily for low acidity, chocolatey depth, and a crisp clean finish.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag green">Dairy Free</span>
-            <button class="add-btn" onclick="addItem('House Cold Brew', 4.50)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="espresso">
-          <div>
-            <div class="menu-top">
-              <h3>Matcha &amp; Loose-Leaf Tea Lattes</h3>
-              <span class="price">$5.25</span>
-            </div>
-            <p class="menu-desc">Whisked green matcha, spiced chai, or fragrant loose-leaf botanical teas poured hot or over ice—awesome with lavender syrup.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag green">Vegan Friendly</span>
-            <button class="add-btn" onclick="addItem('Matcha Tea Latte', 5.25)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="food">
-          <div>
-            <div class="menu-top">
-              <h3>Daily Breakfast Tacos</h3>
-              <span class="price">$4.25</span>
-            </div>
-            <p class="menu-desc">Fresh Austin breakfast tacos delivered warm every morning—including meat, veggie, and vegan options. Served daily until sold out.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag warm">Until Sold Out</span>
-            <button class="add-btn" onclick="addItem('Morning Breakfast Taco', 4.25)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="food">
-          <div>
-            <div class="menu-top">
-              <h3>Moonlight Bakery Pastries</h3>
-              <span class="price">$4.50</span>
-            </div>
-            <p class="menu-desc">Giant sugared cinnamon rolls, flaky almond &amp; butter croissants, seasonal fruit kolaches, and fresh muffins delivered Mon–Sat.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag">Mon–Sat Fresh</span>
-            <button class="add-btn" onclick="addItem('Moonlight Cinnamon Roll', 4.50)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="food">
-          <div>
-            <div class="menu-top">
-              <h3>Misty Morning Gluten-Free Bakes</h3>
-              <span class="price">$4.50</span>
-            </div>
-            <p class="menu-desc">Dedicated gluten-free banana bread slices, bakery muffins, and soft-baked cookies crafted right here in Austin.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag green">Gluten Free</span>
-            <button class="add-btn" onclick="addItem('Misty Morning GF Bake', 4.50)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="food">
-          <div>
-            <div class="menu-top">
-              <h3>Andy K's Weekend Donuts &amp; Fritters</h3>
-              <span class="price">$4.25</span>
-            </div>
-            <p class="menu-desc">Saturday &amp; Sunday tradition: small-batch glazed donuts and crispy apple fritters from Andy K's Donuts—reserve yours early.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag warm">Sat &amp; Sun Only</span>
-            <button class="add-btn" onclick="addItem('Andy Ks Weekend Donut', 4.25)">+ Add to Order</button>
-          </div>
-        </article>
-
-        <article class="menu-card" data-cat="food">
-          <div>
-            <div class="menu-top">
-              <h3>The Serpico Grab &amp; Go Sandwich</h3>
-              <span class="price">$9.50</span>
-            </div>
-            <p class="menu-desc">Stacked deli sandwich from Proof Liquor &amp; Deli—perfect for a fast lunch break or laptop afternoon at the shop.</p>
-          </div>
-          <div class="menu-foot">
-            <span class="tag">Lunch Staple</span>
-            <button class="add-btn" onclick="addItem('The Serpico Sandwich', 9.50)">+ Add to Order</button>
-          </div>
-        </article>
-      </div>
-      <p style="font-size:0.8rem;color:var(--muted);margin-top:18px;">* Sample menu pricing shown for prototype demonstration — updated to match your exact register board before launch.</p>
     </section>
 
-    <section class="section" id="catering" style="padding-top:10px;">
-      <div class="catering-band">
-        <div>
-          <p class="eyebrow" style="color:#E89974;">Fuel Your South Austin Crew</p>
-          <h2>Coffee Travelers, Taco Boxes &amp; Pastry Trays</h2>
-          <p>Hosting a morning team meeting, school appreciation day, or weekend get-together in 78745? Skip corporate chain coffee and bring hot Cuvée brew, breakfast tacos, and Moonlight pastries straight from your neighborhood shop.</p>
-          <ul class="perks">
-            <li>96 oz hot coffee &amp; house cold brew totes (cups, lids, Mill-King &amp; oat milk included)</li>
-            <li>Assorted morning taco boxes + gluten-free &amp; vegan bakery trays</li>
-            <li>Ready for fast curbside pickup on W. William Cannon from 7:00 AM</li>
+    <section class="contrast-band" id="purveyors">
+      <div class="container split-grid">
+        <div class="feature-photo" data-reveal>
+          <img src="../assets/cannon-coffee-1.jpg" alt="Layered iced espresso latte in a tall glass on a woven coaster on a wooden table" width="1440" height="960" loading="lazy">
+        </div>
+        <div data-reveal>
+          <span class="section-kicker">Proudly Pouring &amp; Serving</span>
+          <h2 class="section-title">The makers behind the counter</h2>
+          <p class="section-desc">We are not trying to be a chain, and we are not trying to be a roastery. We buy from people in this city who do their one thing well, then we get out of the way.</p>
+          <ul class="check-list">
+            <li>
+              <span class="check-badge">1</span>
+              <div>
+                <strong>Cuvée Coffee Roasters</strong>
+                <span>Every espresso and filter coffee starts here. Beans roasted in Austin, ground to order, and sold by the bag at the register.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">2</span>
+              <div>
+                <strong>Mill-King Creamery and Moonlight Bakery</strong>
+                <span>Real dairy milk from a Texas family dairy, plus the cinnamon rolls and kolaches that disappear first.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">3</span>
+              <div>
+                <strong>Misty Morning and Andy K's</strong>
+                <span>Dedicated gluten free bakes kept separate from the case, and weekend donuts worth setting an alarm for.</span>
+              </div>
+            </li>
           </ul>
-        </div>
-        <form class="catering-form" onsubmit="submitCatering(event)">
-          <h3>Request a Morning Box Quote</h3>
-          <input type="text" required placeholder="Your name or company" />
-          <input type="email" required placeholder="Email or phone number" />
-          <select required>
-            <option value="">Group size</option>
-            <option>8–15 people (Coffee Tote + Pastries)</option>
-            <option>15–30 people (Office Morning Spread)</option>
-            <option>30+ people (Custom Event Order)</option>
-          </select>
-          <textarea rows="2" placeholder="Preferred date, pickup time &amp; favorite items..."></textarea>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Send Catering Request</button>
-          <div class="toast-msg" id="cateringToast">Demo confirmation: When live, this sends straight to cannoncoffeetx@gmail.com so you capture high-ticket South Austin office &amp; group orders commission-free!</div>
-        </form>
-      </div>
-    </section>
-
-    <section class="section" id="reviews" style="padding-top:10px;">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">78745 Community Love</p>
-          <h2>What Our Regulars Say</h2>
-        </div>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>“Super sweet barista and my iced honey cortado was perfect. I live in the neighborhood so I’ll definitely be back! The prices are perfect too.”</blockquote>
-          <div class="reviewer">— Ciara · Google Review</div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>“Had a delicious latte with homemade lavender syrup and local Mill-King milk along with a nice almond croissant. Cozy, quiet spot to work with a laptop.”</blockquote>
-          <div class="reviewer">— Heather C. · South Austin</div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>“South Austin has been in desperate need of a non-Starbucks coffee shop and Cannon Coffee fills that void. Great coffee, fantastic service every time.”</blockquote>
-          <div class="reviewer">— Mary M. &amp; Stefan D. · Local Regulars</div>
+          <a href="#menu" class="btn btn-primary">See What's On Today</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="visit" style="padding-top:10px;">
-      <div class="visit-grid">
-        <div>
-          <p class="eyebrow">Pull Up a Chair</p>
-          <h2>Hours &amp; Location</h2>
-          <p style="color:var(--muted);margin-top:8px;">Free Wi-Fi, laptop-friendly indoor tables, sunny patio seats, and easy lot parking right off W. William Cannon.</p>
-          <table class="hours-table">
-            <tr><td>Monday – Friday</td><td>7:00 AM – 5:00 PM</td></tr>
-            <tr><td>Saturday</td><td>8:00 AM – 5:00 PM</td></tr>
-            <tr><td>Sunday</td><td>8:00 AM – 5:00 PM</td></tr>
-          </table>
-        </div>
-        <div class="info-cards">
-          <div class="info-box">
-            <small>Address</small>
-            <strong>1901 W. William Cannon Dr, Suite 165-A</strong><br />
-            <span>Austin, TX 78745</span>
-          </div>
-          <div class="info-box">
-            <small>Call the Bar</small>
-            <a href="tel:+15126144215" style="font-weight:700;font-size:1.05rem;">(512) 614-4215</a>
-          </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="https://maps.google.com/?q=1901+W+William+Cannon+Dr+Suite+165A+Austin+TX+78745" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
-            <a href="tel:+15126144215" class="btn btn-outline">Call Shop</a>
+    <section class="section" id="office">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">For the Whole Crew</span>
+            <h2 class="section-title">Coffee totes, taco boxes and pastry trays</h2>
+            <p class="section-desc">Team meeting, school appreciation morning, or a Saturday gathering in 78745. We will pack hot Cuvée coffee, cold brew and food from the same local makers, ready for curbside pickup on William Cannon.</p>
           </div>
         </div>
+        <div class="pillars-grid">
+          <article class="pillar-card" data-reveal>
+            <span class="pillar-num">8 to 15 people</span>
+            <h3>Coffee Tote and Pastries</h3>
+            <p>A 96 ounce tote of hot coffee or house cold brew with cups, lids, Mill-King and oat milk, plus a tray of assorted Moonlight pastries.</p>
+          </article>
+          <article class="pillar-card" data-reveal>
+            <span class="pillar-num">15 to 30 people</span>
+            <h3>Office Morning Spread</h3>
+            <p>Two coffee totes, a box of breakfast tacos with meat, veggie and vegan options, and a mixed bakery tray labelled for the gluten free table.</p>
+          </article>
+          <article class="pillar-card" data-reveal>
+            <span class="pillar-num">30 people and up</span>
+            <h3>Custom Event Order</h3>
+            <p>Larger offices, open houses and weekend events. Tell us the headcount and pickup window and we will build the list around it.</p>
+          </article>
+        </div>
+        <div style="margin-top:26px">
+          <a href="#visit" class="btn btn-primary">Request a Morning Box Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="reviews">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">78745 Community Love</span>
+            <h2 class="section-title">What the neighborhood says</h2>
+          </div>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Super sweet barista and my iced honey cortado was perfect. I live in the neighborhood so I will definitely be back. Prices are right too."</p>
+            </div>
+            <div class="review-meta">Ciara · Google Review</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Had a delicious latte with homemade lavender syrup and local Mill-King milk along with a nice almond croissant. Cozy, quiet spot to work with a laptop."</p>
+            </div>
+            <div class="review-meta">Heather C. · South Austin</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"South Austin has been in desperate need of a non chain coffee shop and Cannon Coffee fills that void. Great coffee, fantastic service every time."</p>
+            </div>
+            <div class="review-meta">Mary M. and Stefan D. · Regulars</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="container action-grid">
+        <div class="form-card" data-reveal>
+          <span class="section-kicker">Group Orders &amp; Catering</span>
+          <h3>Tell us about your morning</h3>
+          <p class="form-sub">Send the date, headcount and pickup window. We reply with a quote and confirm what we can have ready.</p>
+          <form id="inquiryForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="cn-name">Your name</label>
+                <input id="cn-name" name="name" type="text" placeholder="Marcus Reyes" required>
+              </div>
+              <div class="field">
+                <label for="cn-contact">Phone or email</label>
+                <input id="cn-contact" name="contact" type="text" placeholder="marcus@example.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="cn-type">Group size</label>
+                <select id="cn-type" name="type">
+                  <option>Coffee Tote and Pastries (8 to 15)</option>
+                  <option>Office Morning Spread (15 to 30)</option>
+                  <option>Custom Event Order (30+)</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cn-date">Pickup date</label>
+                <input id="cn-date" name="date" type="date" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="cn-notes">Headcount, pickup time and dietary needs</label>
+              <textarea id="cn-notes" name="notes" placeholder="18 people for 7:30am, oat milk for half, three gluten free and two vegan in the group..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send the Request</button>
+            <div class="confirm-box" id="inquiryConfirm" hidden></div>
+          </form>
+        </div>
+
+        <aside class="visit-card" data-reveal>
+          <span class="section-kicker">Pull Up a Chair</span>
+          <h3>Hours and location</h3>
+          <div class="visit-detail">
+            <div><strong>Address:</strong> 1901 W. William Cannon Dr, Suite 165-A, Austin, TX 78745</div>
+            <div><strong>Phone:</strong> <a href="tel:+15126144215">(512) 614-4215</a></div>
+            <div><strong>Email:</strong> <a href="mailto:cannoncoffeetx@gmail.com">cannoncoffeetx@gmail.com</a></div>
+            <div><strong>In the shop:</strong> Free Wi-Fi, laptop tables, a sunny patio and parking right off William Cannon.</div>
+          </div>
+          <ul class="hours-list">
+            <li><span>Monday to Friday</span><span>7:00am - 5:00pm</span></li>
+            <li><span>Saturday</span><span>8:00am - 5:00pm</span></li>
+            <li><span>Sunday</span><span>8:00am - 5:00pm</span></li>
+          </ul>
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="https://maps.google.com/?q=1901+W+William+Cannon+Dr+Suite+165-A+Austin+TX+78745" target="_blank" rel="noopener">Get Directions</a>
+            <a class="btn btn-secondary" href="tel:+15126144215">Call the Bar</a>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p><strong>Cannon Coffee</strong> · 1901 W. William Cannon Dr, Suite 165-A, Austin, TX 78745 · (512) 614-4215</p>
-    <p style="margin-top:6px;">Quality Coffee by Authentic People · Serving South Austin Daily</p>
-  </footer>
-
-  <!-- Direct Pickup Order Drawer -->
-  <div class="drawer-backdrop" id="drawer" onclick="if(event.target===this)toggleDrawer(false)">
-    <div class="drawer">
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-          <h3>Pickup Order</h3>
-          <button onclick="toggleDrawer(false)" style="background:none;font-size:1.5rem;">&times;</button>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div class="brand">
+          <span class="brand-mark">CC</span>
+          <span class="brand-text">
+            <span class="brand-name">Cannon Coffee</span>
+            <span class="brand-sub">1901 W. William Cannon Dr, Suite 165-A, Austin, TX 78745</span>
+          </span>
         </div>
-        <p style="font-size:0.84rem;color:var(--muted);margin-bottom:16px;">Ready in ~8 mins at 1901 W. William Cannon Suite 165-A · Zero delivery app fees.</p>
-        <div id="bagItems"><p style="color:var(--muted);font-size:0.9rem;padding:20px 0;">Your morning bag is empty — tap any drink, taco, or pastry to test ordering!</p></div>
-        <div style="margin-top:16px;">
-          <label style="font-size:0.8rem;font-weight:600;display:block;margin-bottom:6px;">Milk Preference (for espresso/tea)</label>
-          <select style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);">
-            <option>Mill-King Whole Milk</option>
-            <option>Oat Milk (Vegan)</option>
-            <option>Almond Milk (Vegan)</option>
-            <option>Skim / Splash Only</option>
-          </select>
+        <div class="footer-links">
+          <a href="#menu">Menu</a>
+          <a href="#purveyors">Local Makers</a>
+          <a href="#office">Office Boxes</a>
+          <a href="#visit">Visit</a>
         </div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:18px;">
-        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;margin-bottom:14px;">
-          <span>Estimated Total</span>
-          <span id="bagTotal">$0.00</span>
-        </div>
-        <button class="btn btn-primary" style="width:100%;" onclick="checkoutDemo()">Place Pickup Order</button>
-        <div class="toast-msg" id="checkoutToast">Interactive Preview: On your live site, this connects directly to Square/Toast/Stripe so morning commuters order ahead with 0% third-party commission!</div>
+      <div class="footer-copy">
+        <span>© Cannon Coffee · South Austin, Texas</span>
+        <span>Mon to Fri 7am to 5pm · Weekends 8am to 5pm</span>
       </div>
     </div>
+  </footer>
+
+  <div class="mobile-dock" aria-label="Quick actions">
+    <button type="button" class="btn btn-primary" data-open-bag>Order (<span data-bag-count>0</span>)</button>
+    <a href="#office" class="btn btn-secondary">Office Boxes</a>
   </div>
 
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="bagDrawer" aria-hidden="true" aria-label="Pickup order bag">
+    <div class="drawer-head">
+      <h3>Your Pickup Bag</h3>
+      <button type="button" class="close-btn" data-close-bag aria-label="Close bag">×</button>
+    </div>
+    <div class="drawer-body" id="bagItems"></div>
+    <form class="drawer-foot" id="pickupForm" hidden>
+      <div id="drawerFoot">
+        <div class="subtotal-row"><span>Estimated total</span><span id="bagSubtotal">$0.00</span></div>
+        <div class="drawer-fields">
+          <input type="text" name="customer" placeholder="Your name" required aria-label="Your name">
+          <select name="pickup_time" aria-label="Pickup time">
+            <option>Ready in 10 mins</option>
+            <option>Ready in 20 mins</option>
+            <option>7:30am Commute</option>
+            <option>12:00pm Lunch</option>
+          </select>
+        </div>
+        <input type="text" class="drawer-note" name="notes" placeholder="Milk choice, syrup or taco preferences" aria-label="Order notes">
+        <button type="submit" class="btn btn-primary" style="width:100%">Place Pickup Order</button>
+      </div>
+    </form>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    const bag = [];
-    function filterMenu(cat, btn) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.menu-card').forEach(card => {
-        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
-      });
-    }
-    function addItem(name, price) {
-      bag.push({ name, price });
-      renderBag();
-      toggleDrawer(true);
-    }
-    function removeItem(i) {
-      bag.splice(i, 1);
-      renderBag();
-    }
-    function renderBag() {
-      document.getElementById('bagCount').textContent = bag.length;
-      const el = document.getElementById('bagItems');
-      if (!bag.length) {
-        el.innerHTML = '<p style="color:var(--muted);font-size:0.9rem;padding:20px 0;">Your morning bag is empty — tap any drink, taco, or pastry to add.</p>';
-        document.getElementById('bagTotal').textContent = '$0.00';
-        return;
-      }
-      el.innerHTML = bag.map((item, i) =>
-        `<div class="drawer-item"><span>${item.name}</span><span><strong>$${item.price.toFixed(2)}</strong> <button onclick="removeItem(${i})" style="background:none;color:#999;margin-left:8px;">&times;</button></span></div>`
-      ).join('');
-      const sum = bag.reduce((a, b) => a + b.price, 0);
-      document.getElementById('bagTotal').textContent = '$' + sum.toFixed(2);
-    }
-    function toggleDrawer(open) {
-      document.getElementById('drawer').classList.toggle('open', open);
-    }
-    function checkoutDemo() {
-      document.getElementById('checkoutToast').style.display = 'block';
-    }
-    function submitCatering(e) {
-      e.preventDefault();
-      document.getElementById('cateringToast').style.display = 'block';
-    }
+    window.SHOP_CONFIG = {
+      slug: 'cannon-coffee',
+      currency: '$',
+      tz: 'America/Chicago',
+      fallbackHours: 'Mon to Fri 7am - 5pm',
+      hours: { 0:[480,1020], 1:[420,1020], 2:[420,1020], 3:[420,1020], 4:[420,1020], 5:[420,1020], 6:[480,1020] }
+    };
   </script>
+  <script src="../assets/studio-core.js"></script>
 </body>
 </html>

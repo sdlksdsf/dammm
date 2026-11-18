@@ -1,369 +1,616 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Milano Cafe — Family-Owned Italian Ristorante, Wine Bar &amp; Art Galleria | Austin, TX</title>
-  <meta name="description" content="Family-owned in Southwest Austin since 2009. Handmade Lobster Ravioli, Frutto Di Mare, fine wines, original art galleria & full-service event catering at 4601 Southwest Pkwy." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milano Cafe | Italian Ristorante, Wine Bar &amp; Art Galleria in Austin</title>
+  <meta name="description" content="Family owned Italian ristorante on Southwest Parkway in Austin since 2009. Handmade ravioli, linguine frutto di mare, a curated wine list and full service catering in the art galleria.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/studio-core.css">
   <style>
-    :root {
-      --wine: #581722;
-      --wine-dark: #410F18;
-      --gold: #A98445;
-      --alabaster: #F9F5EE;
-      --ivory: #FFFDF9;
-      --charcoal: #171312;
-      --muted: #625853;
-      --border: rgba(23, 19, 18, 0.12);
-      --radius: 16px;
+    :root, [data-theme="light"] {
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --bg: #fbf8f4;
+      --bg-alt: #f2ece3;
+      --surface: #ffffff;
+      --surface-2: #f6f0e8;
+      --header-bg: rgba(251, 248, 244, 0.9);
+      --float-bg: rgba(255, 255, 255, 0.94);
+      --text: #221a16;
+      --text-2: #4a3d35;
+      --text-3: #6d5c51;
+      --border: rgba(34, 26, 22, 0.12);
+      --border-strong: rgba(34, 26, 22, 0.24);
+      --accent: #7c2d3a;
+      --accent-strong: #64222d;
+      --accent-text: #74232f;
+      --accent-soft: rgba(124, 45, 58, 0.1);
+      --accent-border: rgba(124, 45, 58, 0.26);
+      --accent-glow: rgba(124, 45, 58, 0.26);
+      --on-accent: #ffffff;
+      --accent-2: #9a7b3f;
+      --accent-2-soft: rgba(154, 123, 63, 0.14);
+      --accent-2-text: #7a5f2b;
+      --accent-2-border: rgba(154, 123, 63, 0.3);
+      --hero-orb-1: rgba(124, 45, 58, 0.12);
+      --hero-orb-2: rgba(154, 123, 63, 0.14);
+      --contrast-bg: #1f1a17;
+      --contrast-surface: rgba(255, 255, 255, 0.06);
+      --contrast-text: #fbf8f4;
+      --contrast-text-2: #d9ccc1;
+      --contrast-border: rgba(255, 255, 255, 0.13);
+      --contrast-accent: #e0b183;
+      --hero-ratio: 4 / 4.3;
+      --feature-ratio: 4 / 3.1;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--alabaster);
-      color: var(--charcoal);
-      line-height: 1.62;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.08; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; }
-
-    .preview-bar {
-      background: var(--charcoal);
-      color: #F9F5EE;
-      padding: 10px 20px;
-      font-size: 0.82rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .preview-bar a {
-      background: var(--gold);
-      color: #fff;
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.78rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(249, 245, 238, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-bar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .brand strong { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wine); display: block; line-height: 1; }
-    .brand span { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-    nav { display: flex; gap: 28px; font-size: 0.88rem; font-weight: 600; color: var(--muted); }
-    nav a:hover { color: var(--wine); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.88rem;
-      transition: all 0.2s;
-    }
-    .btn-wine { background: var(--wine); color: #fff; box-shadow: 0 10px 24px rgba(88, 23, 34, 0.22); }
-    .btn-wine:hover { background: var(--wine-dark); }
-    .btn-gold { background: var(--gold); color: #fff; }
-    .btn-outline { border: 1.5px solid var(--border); color: var(--charcoal); background: transparent; }
-    .btn-outline:hover { background: #EFE7DA; }
-
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 52px 24px 76px;
-      display: grid;
-      grid-template-columns: 1fr 1.02fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .since {
-      font-size: 0.74rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .hero h1 { font-size: clamp(2.8rem, 5.2vw, 4.4rem); font-weight: 600; margin-bottom: 18px; }
-    .hero h1 em { font-style: italic; color: var(--wine); font-weight: 500; }
-    .hero p { font-size: 1.03rem; color: var(--muted); max-width: 500px; margin-bottom: 30px; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 34px; }
-    .trust {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
-      font-size: 0.83rem;
-      color: var(--muted);
-    }
-    .trust strong { display: block; font-size: 1.12rem; color: var(--charcoal); }
-    .hero img {
-      width: 100%;
-      aspect-ratio: 4 / 3.35;
-      object-fit: cover;
-      border-radius: 24px;
-      box-shadow: 0 24px 55px rgba(23, 19, 18, 0.18);
-    }
-
-    .section { max-width: 1200px; margin: 0 auto; padding: 76px 24px; }
-    .eyebrow { font-size: 0.73rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-    .section h2 { font-size: clamp(2.3rem, 4vw, 3.3rem); font-weight: 600; }
-    .menu-cols {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-      margin-top: 34px;
-    }
-    .m-item {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 26px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-    }
-    .m-item h3 { font-size: 1.45rem; color: var(--charcoal); margin-bottom: 5px; }
-    .m-item p { font-size: 0.89rem; color: var(--muted); }
-    .m-price { font-weight: 700; color: var(--wine); font-size: 1.02rem; white-space: nowrap; }
-
-    .cater-panel {
-      background: var(--wine);
-      color: #F9F5EE;
-      border-radius: 28px;
-      padding: 58px 50px;
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 46px;
-      align-items: center;
-    }
-    .cater-panel h2 { color: #fff; margin-bottom: 16px; }
-    .cater-panel p { color: rgba(249, 245, 238, 0.82); margin-bottom: 22px; }
-    .cater-box {
-      background: var(--ivory);
-      color: var(--charcoal);
-      border-radius: 20px;
-      padding: 30px;
-      display: grid;
-      gap: 12px;
-    }
-    .cater-box input, .cater-box select, .cater-box textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--alabaster);
-      font-family: inherit;
-      font-size: 0.9rem;
-    }
-
-    .visit-row {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 44px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-    .hr { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
-    .ok { display: none; background: #E7F2EA; color: #1E522E; padding: 12px 14px; border-radius: 10px; font-size: 0.84rem; font-weight: 600; margin-top: 8px; }
-    footer { text-align: center; padding: 34px 24px; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); }
-
-    .modal-bg { position: fixed; inset: 0; background: rgba(23,19,18,0.6); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
-    .modal-bg.open { display: flex; }
-    .modal { background: var(--ivory); border-radius: 22px; max-width: 440px; width: 100%; padding: 30px; display: grid; gap: 12px; }
-    .modal input, .modal select { width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--alabaster); font-family: inherit; }
-
-    @media (max-width: 900px) {
-      nav { display: none; }
-      .hero, .menu-cols, .cater-panel, .visit-row { grid-template-columns: 1fr; }
-      .cater-panel, .visit-row { padding: 30px 22px; }
+    [data-theme="dark"] {
+      --bg: #14100e;
+      --bg-alt: #1c1714;
+      --surface: #241d19;
+      --surface-2: #2f2721;
+      --header-bg: rgba(20, 16, 14, 0.9);
+      --float-bg: rgba(36, 29, 25, 0.94);
+      --text: #fbf8f4;
+      --text-2: #ded0c5;
+      --text-3: #b3a094;
+      --border: rgba(255, 255, 255, 0.11);
+      --border-strong: rgba(255, 255, 255, 0.23);
+      --accent: #9c3a49;
+      --accent-strong: #7c2d3a;
+      --accent-text: #e29aa5;
+      --accent-soft: rgba(226, 154, 165, 0.14);
+      --accent-border: rgba(226, 154, 165, 0.3);
+      --accent-glow: rgba(156, 58, 73, 0.34);
+      --on-accent: #ffffff;
+      --accent-2: #c8a768;
+      --accent-2-soft: rgba(200, 167, 104, 0.15);
+      --accent-2-text: #e2c691;
+      --accent-2-border: rgba(200, 167, 104, 0.32);
+      --hero-orb-1: rgba(226, 154, 165, 0.15);
+      --hero-orb-2: rgba(200, 167, 104, 0.14);
+      --contrast-bg: #fbf8f4;
+      --contrast-surface: #ffffff;
+      --contrast-text: #221a16;
+      --contrast-text-2: #4a3d35;
+      --contrast-border: rgba(34, 26, 22, 0.12);
+      --contrast-accent: #74232f;
     }
   </style>
 </head>
 <body>
-  <div class="preview-bar" id="previewBar">
-    <span>Custom redesign concept for <strong>Milano Cafe (4601 Southwest Pkwy, Austin)</strong> by Shayan — built for milanoaustin.com &amp; customizable down to every detail.</span>
-    <a href="mailto:shayan44wrgs@gmail.com?subject=Milano%20Cafe%20Website%20Preview">Claim or Customize</a> <a href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20just%20checked%20out%20the%20website%20preview%20for%20Milano%20Cafe" target="_blank" rel="noopener">WhatsApp +92 312 4228811</a>
-    <button onclick="document.getElementById('previewBar').remove()" style="background:none;color:#ccc;font-size:1.1rem;">&times;</button>
+  <div class="proto-bar" role="region" aria-label="Prototype notice">
+    <div class="proto-inner">
+      <div class="proto-msg">
+        <span class="proto-badge">Prototype</span>
+        <span>Built for <strong>Milano Cafe</strong> by Shayan. Anything here can be customized for your restaurant.</span>
+      </div>
+      <div class="proto-contacts">
+        <a class="proto-chip" href="mailto:shayan44wrgs@gmail.com?subject=Milano%20Cafe%20Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></svg>
+          shayan44wrgs@gmail.com
+        </a>
+        <a class="proto-chip proto-chip--wa" href="https://wa.me/923124228811?text=Hi%20Shayan%2C%20I%20saw%20the%20Milano%20Cafe%20website%20prototype" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +92 312 4228811
+        </a>
+      </div>
+    </div>
   </div>
 
-  <header>
-    <div class="nav-bar">
-      <a href="#" class="brand">
-        <strong>Milano Cafe</strong>
-        <span>Italian Ristorante &amp; Art Galleria · Austin</span>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#top" class="brand">
+        <span class="brand-mark">M</span>
+        <span class="brand-text">
+          <span class="brand-name">Milano Cafe</span>
+          <span class="brand-sub">Southwest Parkway · Austin, Texas</span>
+        </span>
       </a>
-      <nav>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#menu">Signature Menu</a>
-        <a href="#catering">Event Catering</a>
-        <a href="#visit">Hours &amp; Location</a>
+        <a href="#reserve">Event Catering</a>
+        <a href="#reviews">Guests</a>
+        <a href="#visit">Hours &amp; Galleria</a>
       </nav>
-      <button class="btn btn-wine" onclick="document.getElementById('resModal').classList.add('open')">Reserve a Table</button>
+      <div class="nav-actions">
+        <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+          <span class="theme-label">Dark</span>
+        </button>
+        <button type="button" class="bag-btn" data-open-bag>
+          <span class="bag-label">Reserve</span>
+          <span class="bag-count" data-bag-count>0</span>
+        </button>
+        <button type="button" class="burger-btn" data-burger aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div>
-        <p class="since">Family-Owned Since April 2009 · Southwest Parkway</p>
-        <h1>Timeless Italian cooking meets an intimate <em>Art Galleria.</em></h1>
-        <p>Gather under soaring ceilings in Southwest Austin for handmade ravioli, coastal seafood linguine, curated wines, and full-service catering crafted for life's finest celebrations.</p>
-        <div class="hero-btns">
-          <button class="btn btn-wine" onclick="document.getElementById('resModal').classList.add('open')">Book a Table Tonight</button>
-          <a href="#catering" class="btn btn-outline">Corporate &amp; Event Catering</a>
-          <a href="tel:+15124286076" class="btn btn-outline">Call (512) 428-6076</a>
-        </div>
-        <div class="trust">
-          <div><strong>94% Recommend</strong>700+ Yelp &amp; FB reviews</div>
-          <div><strong>Since 2009</strong>Family-owned in 78735</div>
-          <div><strong>Lunch, Dinner &amp; Wine</strong>Dine-in, takeout &amp; catering</div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <div class="mobile-nav-list">
+          <a href="#menu">Pasta, Secondi &amp; Wine</a>
+          <a href="#catering">Catering &amp; Private Dining</a>
+          <a href="#reviews">Guest Reviews</a>
+          <a href="#visit">Hours, Phone &amp; Directions</a>
         </div>
       </div>
-      <img src="/assets/milano-cafe-hero.jpg" alt="Handmade lobster ravioli in saffron cream sauce, fresh tomato basil bruschetta, and Cabernet red wine at Milano Cafe Austin" />
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="hero-pills">
+            <span class="eyebrow-pill">Family Owned Since April 2009</span>
+            <span class="status-pill" id="liveStatus">
+              <span class="status-dot"></span>
+              <span id="liveStatusText">Mon to Fri from 10am</span>
+            </span>
+          </div>
+          <h1>Italian cooking and a quiet art galleria, <span class="accent-word">off Southwest Parkway.</span></h1>
+          <p class="hero-lead">High ceilings, white tablecloths and a kitchen that has been run by the same family for over fifteen years. Handmade ravioli, coastal seafood linguine, a curated wine list and original work on the walls.</p>
+          <div class="hero-ctas">
+            <a href="#reserve" class="btn btn-primary">Book a Table</a>
+            <a href="#catering" class="btn btn-secondary">Plan Event Catering</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>94%</strong>
+              <span>Would recommend to a friend</span>
+            </div>
+            <div class="stat-item">
+              <strong>2009</strong>
+              <span>Same family, same kitchen</span>
+            </div>
+            <div class="stat-item">
+              <strong>Lunch &amp; Dinner</strong>
+              <span>Dine in, takeout and catering</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media" data-reveal>
+          <div class="hero-photo-wrap">
+            <img src="../assets/milano-cafe-1.jpg" alt="Two handmade pasta plates on white linen with red wine, chilled beer and bread" width="960" height="1440" fetchpriority="high">
+            <div class="hero-float">
+              <div>
+                <div class="hero-float-title">Handmade Pasta Every Service</div>
+                <div class="hero-float-sub">Ravioli, linguine and lasagna made in house</div>
+              </div>
+              <span class="hero-float-tag">78735</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Restaurant essentials">
+      <div class="container quick-grid">
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="quick-label">Address</div>
+            <div class="quick-val">4601 Southwest Pkwy, Austin, TX 78735</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="quick-label">Hours</div>
+            <div class="quick-val">Mon to Fri 10am to 9pm · Sat 11am to 9pm</div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="quick-label">Reservations</div>
+            <div class="quick-val"><a href="tel:+15124286076">(512) 428-6076</a></div>
+          </div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3h8l-1 8H9L8 3z"/><path d="M9 11c0 4-2 5-2 8h10c0-3-2-4-2-8"/></svg></div>
+          <div>
+            <div class="quick-label">Inside</div>
+            <div class="quick-val">Wine bar, galleria walls and private space</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="menu">
-      <p class="eyebrow">Most-Loved House Specialties</p>
-      <h2>From Our Kitchen &amp; Wine Bar</h2>
-      <div class="menu-cols">
-        <div class="m-item">
-          <div><h3>Lobster Ravioli</h3><p>Delicate pasta pillows filled with sweet lobster in a velvety rose cream sauce with fresh herbs—our #1 guest favorite.</p></div>
-          <span class="m-price">$26.40</span>
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">From Our Kitchen &amp; Wine Bar</span>
+            <h2 class="section-title">The dishes our guests order again</h2>
+            <p class="section-desc">Build a takeout order for pickup, or use the list as a starting point for your table tonight. The kitchen will hold your selection when you arrive.</p>
+          </div>
         </div>
-        <div class="m-item">
-          <div><h3>Linguine Frutto Di Mare</h3><p>Coastal Italian seafood medley tossed with al dente linguine, garlic, white wine, and bright herb-infused sauce.</p></div>
-          <span class="m-price">$27.60</span>
+
+        <div class="filter-bar" role="tablist" aria-label="Menu categories">
+          <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Specialties</button>
+          <button type="button" class="filter-tab" data-filter="pasta" role="tab" aria-selected="false">Handmade Pasta</button>
+          <button type="button" class="filter-tab" data-filter="secondi" role="tab" aria-selected="false">Secondi</button>
+          <button type="button" class="filter-tab" data-filter="antipasti" role="tab" aria-selected="false">Antipasti &amp; Sharing</button>
         </div>
-        <div class="m-item">
-          <div><h3>Tortellini Gorgonzola</h3><p>Cheese-filled tortellini folded into a rich, savory Gorgonzola cream reduction—paired beautifully with Cabernet.</p></div>
-          <span class="m-price">$22.80</span>
-        </div>
-        <div class="m-item">
-          <div><h3>Drunken Linguine</h3><p>Bold house specialty pasta simmered in a robust wine-infused sauce loaded with savory Italian aromatics.</p></div>
-          <span class="m-price">$22.80</span>
-        </div>
-        <div class="m-item">
-          <div><h3>Butternut Squash or Spinach Ravioli</h3><p>Choose sweet roasted butternut squash or tender spinach &amp; ricotta ravioli finished to perfection.</p></div>
-          <span class="m-price">$21.60</span>
-        </div>
-        <div class="m-item">
-          <div><h3>Chicken Piccata</h3><p>Sautéed chicken breast in bright lemon-butter white wine sauce with briny capers alongside pasta.</p></div>
-          <span class="m-price">$21.60</span>
-        </div>
-        <div class="m-item">
-          <div><h3>Classic Bruschetta</h3><p>Toasted artisan bread crowned with vine-ripened tomatoes, fragrant basil, garlic, and extra-virgin olive oil.</p></div>
-          <span class="m-price">$15.60</span>
-        </div>
-        <div class="m-item">
-          <div><h3>House Meat Lasagna &amp; Eggplant Parmigiana</h3><p>Old-world layered meat lasagna, golden baked eggplant parmigiana, Pasta Primavera, and our beloved Italian Flag trio.</p></div>
-          <span class="m-price">$21.60</span>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Lobster Ravioli</h3>
+                <span class="menu-price">$26.40</span>
+              </div>
+              <p class="menu-desc">Pasta pillows filled with sweet lobster in a rose cream sauce with fresh herbs. The single most ordered plate in the dining room.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Guest Favourite</span></div>
+              <div data-slot="mi1" data-name="Lobster Ravioli" data-price="26.40"><button type="button" class="add-btn" data-add="mi1" data-name="Lobster Ravioli" data-price="26.40">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Linguine Frutto di Mare</h3>
+                <span class="menu-price">$27.60</span>
+              </div>
+              <p class="menu-desc">Coastal seafood tossed with linguine, garlic, white wine and a bright herb sauce. Order it with a glass of the Vermentino.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Seafood</span></div>
+              <div data-slot="mi2" data-name="Linguine Frutto di Mare" data-price="27.60"><button type="button" class="add-btn" data-add="mi2" data-name="Linguine Frutto di Mare" data-price="27.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Tortellini Gorgonzola</h3>
+                <span class="menu-price">$22.80</span>
+              </div>
+              <p class="menu-desc">Cheese filled tortellini folded into a rich Gorgonzola cream. Rich enough that a Cabernet is the obvious move with it.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Vegetarian</span></div>
+              <div data-slot="mi3" data-name="Tortellini Gorgonzola" data-price="22.80"><button type="button" class="add-btn" data-add="mi3" data-name="Tortellini Gorgonzola" data-price="22.80">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Drunken Linguine</h3>
+                <span class="menu-price">$22.80</span>
+              </div>
+              <p class="menu-desc">A house speciality simmered in a wine rich sauce with plenty of garlic and Italian aromatics. Simple, punchy and a steady order.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">House Special</span></div>
+              <div data-slot="mi4" data-name="Drunken Linguine" data-price="22.80"><button type="button" class="add-btn" data-add="mi4" data-name="Drunken Linguine" data-price="22.80">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Butternut Squash or Spinach Ravioli</h3>
+                <span class="menu-price">$21.60</span>
+              </div>
+              <p class="menu-desc">Roasted butternut squash ravioli or spinach and ricotta, finished with butter and sage. Both are made in the kitchen each morning.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Vegetarian</span></div>
+              <div data-slot="mi5" data-name="Squash or Spinach Ravioli" data-price="21.60"><button type="button" class="add-btn" data-add="mi5" data-name="Squash or Spinach Ravioli" data-price="21.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="pasta">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">House Meat Lasagna</h3>
+                <span class="menu-price">$21.60</span>
+              </div>
+              <p class="menu-desc">Layered the old way and baked until the edges crisp. Also available as the Italian Flag trio if you want eggplant and pasta primavera alongside.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Baked to Order</span></div>
+              <div data-slot="mi6" data-name="House Meat Lasagna" data-price="21.60"><button type="button" class="add-btn" data-add="mi6" data-name="House Meat Lasagna" data-price="21.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="secondi">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Chicken Piccata</h3>
+                <span class="menu-price">$21.60</span>
+              </div>
+              <p class="menu-desc">Sautéed chicken breast in a lemon butter white wine sauce with capers, served with pasta alongside. One of the lighter dinner orders.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Lighter Choice</span></div>
+              <div data-slot="mi7" data-name="Chicken Piccata" data-price="21.60"><button type="button" class="add-btn" data-add="mi7" data-name="Chicken Piccata" data-price="21.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="secondi">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Eggplant Parmigiana</h3>
+                <span class="menu-price">$21.60</span>
+              </div>
+              <p class="menu-desc">Sliced eggplant baked golden under marinara and cheese. Pairs well with a side of pasta primavera if you are sharing the table.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Vegetarian</span></div>
+              <div data-slot="mi8" data-name="Eggplant Parmigiana" data-price="21.60"><button type="button" class="add-btn" data-add="mi8" data-name="Eggplant Parmigiana" data-price="21.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="antipasti">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Classic Bruschetta</h3>
+                <span class="menu-price">$15.60</span>
+              </div>
+              <p class="menu-desc">Toasted artisan bread with vine ripened tomatoes, basil, garlic and good olive oil. The usual way to start a table here.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">To Share</span><span class="tag">Vegan</span></div>
+              <div data-slot="mi9" data-name="Classic Bruschetta" data-price="15.60"><button type="button" class="add-btn" data-add="mi9" data-name="Classic Bruschetta" data-price="15.60">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="antipasti">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Catering Tray for Twelve</h3>
+                <span class="menu-price">$189.00</span>
+              </div>
+              <p class="menu-desc">Two pasta choices from the list above, a tray of bruschetta and a mixed salad, delivered hot to your office or venue in Southwest Austin.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag tag-hot">Group Tray</span></div>
+              <div data-slot="mi10" data-name="Catering Tray for Twelve" data-price="189.00"><button type="button" class="add-btn" data-add="mi10" data-name="Catering Tray for Twelve" data-price="189.00">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="antipasti">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Wine Bar Flight of Three</h3>
+                <span class="menu-price">$24.00</span>
+              </div>
+              <p class="menu-desc">Three pours chosen by the house, poured at the bar before dinner. Tell us what you usually drink and we will take it from there.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">At the Bar</span><span class="tag">21+</span></div>
+              <div data-slot="mi11" data-name="Wine Bar Flight" data-price="24.00"><button type="button" class="add-btn" data-add="mi11" data-name="Wine Bar Flight" data-price="24.00">+ Add</button></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-cat="antipasti">
+            <div>
+              <div class="menu-top">
+                <h3 class="menu-name">Galleria Dinner Package</h3>
+                <span class="menu-price">$58.00</span>
+              </div>
+              <p class="menu-desc">Per guest, three courses with a glass of wine, served among the artwork for private parties of twenty or more. Ask about dates.</p>
+            </div>
+            <div class="menu-foot">
+              <div class="menu-tags"><span class="tag">Private Dining</span></div>
+              <div data-slot="mi12" data-name="Galleria Dinner Package" data-price="58.00"><button type="button" class="add-btn" data-add="mi12" data-name="Galleria Dinner Package" data-price="58.00">+ Add</button></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="catering" style="padding-top:10px;">
-      <div class="cater-panel">
-        <div>
-          <p class="eyebrow" style="color:#E5C486;">Southwest Austin &amp; Barton Creek Catering</p>
-          <h2>Effortless Italian Catering for Offices, Weddings &amp; Gatherings</h2>
-          <p>From executive lunches along Southwest Parkway to rehearsal dinners, holiday parties, and family milestones—bring hot trays of Milano's handmade ravioli, lasagna, Chicken Piccata, crisp salads, and artisan bruschetta straight to your guests.</p>
-          <a href="tel:+15124286076" class="btn btn-gold">Tap to Call Catering: (512) 428-6076</a>
+    <section class="contrast-band" id="catering">
+      <div class="container split-grid">
+        <div class="feature-photo" data-reveal>
+          <img src="../assets/milano-cafe-2.jpg" alt="Candlelit long Italian dining table set with white plates and glass carafes for a private event" width="1440" height="960" loading="lazy">
         </div>
-        <form class="cater-box" onsubmit="event.preventDefault();document.getElementById('mCatOk').style.display='block'">
-          <h3 style="font-size:1.75rem;color:var(--wine);">Request a Custom Catering Proposal</h3>
-          <input type="text" required placeholder="Your name or company" />
-          <input type="email" required placeholder="Email address" />
-          <input type="tel" required placeholder="Phone number" />
-          <select required>
-            <option value="">Event type &amp; guest count</option>
-            <option>Corporate / Office Lunch (15–40 guests)</option>
-            <option>Private Party / Family Celebration (20–60 guests)</option>
-            <option>Wedding / Rehearsal / Large Gala (60+ guests)</option>
-          </select>
-          <textarea rows="2" placeholder="Event date, location &amp; favorite dishes..."></textarea>
-          <button type="submit" class="btn btn-wine" style="width:100%;">Get Catering Quote</button>
-          <div class="ok" id="mCatOk">Preview Demo: Delivers instant lead alerts straight to cafemilanoaustin@gmail.com (plus working one-tap mobile phone dialing!).</div>
-        </form>
+        <div data-reveal>
+          <span class="section-kicker">Southwest Austin &amp; Barton Creek</span>
+          <h2 class="section-title">Italian catering for offices, weddings and family nights</h2>
+          <p class="section-desc">Executive lunches off Southwest Parkway, rehearsal dinners, holiday parties and milestone birthdays. We bring the trays, the staff if you need them, and the same food that leaves the kitchen on a Saturday night.</p>
+          <ul class="check-list">
+            <li>
+              <span class="check-badge">1</span>
+              <div>
+                <strong>Office Lunches and Client Dinners</strong>
+                <span>Hot trays of ravioli, lasagna and Chicken Piccata with salads and bruschetta, set up and labelled for your guests.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">2</span>
+              <div>
+                <strong>Weddings and Rehearsal Dinners</strong>
+                <span>Full service options with a wine pairing chosen by the family, timed to your ceremony and speeches.</span>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge">3</span>
+              <div>
+                <strong>Private Dining in the Galleria</strong>
+                <span>Book the room among the original artwork for twenty to sixty guests, with a set menu built with our chef.</span>
+              </div>
+            </li>
+          </ul>
+          <a href="#reserve" class="btn btn-primary">Request a Catering Proposal</a>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="visit" style="padding-top:10px;">
-      <div class="visit-row">
-        <div>
-          <p class="eyebrow">Join Us for Lunch or Dinner</p>
-          <h2>Hours &amp; Galleria</h2>
-          <div style="margin-top:16px;">
-            <div class="hr"><span>Monday – Friday</span><strong>10:00 AM – 9:00 PM</strong></div>
-            <div class="hr"><span>Saturday</span><strong>11:00 AM – 9:00 PM</strong></div>
-            <div class="hr"><span>Sunday</span><strong>Closed</strong></div>
-          </div>
-          <p style="font-size:0.86rem;color:var(--muted);margin-top:14px;">Dine-In · Takeout · Contactless Delivery · Wine Bar · Original Art Galleria</p>
-        </div>
-        <div style="display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <p><strong>Address:</strong> 4601 Southwest Pkwy, Austin, TX 78735</p>
-          <p><strong>Phone:</strong> <a href="tel:+15124286076" style="font-weight:700;">(512) 428-6076</a></p>
-          <p><strong>Email:</strong> <a href="mailto:cafemilanoaustin@gmail.com">cafemilanoaustin@gmail.com</a></p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=4601+Southwest+Pkwy+Austin+TX+78735" target="_blank" rel="noopener" class="btn btn-wine">Get Directions</a>
-            <a href="tel:+15124286076" class="btn btn-outline">Order Takeout by Phone</a>
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="section-kicker">Guests Since 2009</span>
+            <h2 class="section-title">Quiet rooms, generous plates, regulars who return</h2>
           </div>
         </div>
+        <div class="reviews-grid">
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"We have been coming here for years for anniversaries. The lobster ravioli has not changed and neither has the welcome at the door. Feels like a family place."</p>
+            </div>
+            <div class="review-meta">Google Review · Austin regular</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Booked the room for a company dinner for thirty. They handled the menu, the timing and the wine, and every plate came out hot. Easily the easiest event I have run."</p>
+            </div>
+            <div class="review-meta">Private dining guest · Southwest Austin</div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="review-quote">"Beautiful room with real art on the walls, proper white linens, and pasta that tastes like it was made that morning because it was. Worth the drive from downtown."</p>
+            </div>
+            <div class="review-meta">94% recommend across 700+ reviews</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="reserve">
+      <div class="container action-grid">
+        <div class="form-card" data-reveal>
+          <span class="section-kicker">Reservations &amp; Catering</span>
+          <h3>Book a table or request a proposal</h3>
+          <p class="form-sub">Tell us the date, how many are coming and whether it is dinner or an event. We reply with availability the same day.</p>
+          <form id="inquiryForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="mi-name">Your name</label>
+                <input id="mi-name" name="name" type="text" placeholder="Elena Ruiz" required>
+              </div>
+              <div class="field">
+                <label for="mi-contact">Phone or email</label>
+                <input id="mi-contact" name="contact" type="text" placeholder="elena@example.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="mi-type">What are you booking?</label>
+                <select id="mi-type" name="type">
+                  <option>Table for Two</option>
+                  <option>Family Table or Group Dinner</option>
+                  <option>Corporate / Office Catering</option>
+                  <option>Private Event in the Galleria</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="mi-date">Date</label>
+                <input id="mi-date" name="date" type="date" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="mi-notes">Guest count, time and anything else</label>
+              <textarea id="mi-notes" name="notes" placeholder="Six of us on Saturday at 7:30pm, one vegetarian, and we would love a corner table if possible..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send Reservation Request</button>
+            <div class="confirm-box" id="inquiryConfirm" hidden></div>
+          </form>
+        </div>
+
+        <aside class="visit-card" id="visit" data-reveal>
+          <span class="section-kicker">Hours &amp; Galleria</span>
+          <h3>4601 Southwest Parkway</h3>
+          <div class="visit-detail">
+            <div><strong>Address:</strong> 4601 Southwest Pkwy, Austin, TX 78735</div>
+            <div><strong>Phone:</strong> <a href="tel:+15124286076">(512) 428-6076</a></div>
+            <div><strong>Email:</strong> <a href="mailto:cafemilanoaustin@gmail.com">cafemilanoaustin@gmail.com</a></div>
+            <div><strong>Service:</strong> Dine in, takeout, wine bar and private events in the galleria.</div>
+          </div>
+          <ul class="hours-list">
+            <li><span>Monday to Friday</span><span>10:00am - 9:00pm</span></li>
+            <li><span>Saturday</span><span>11:00am - 9:00pm</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+          </ul>
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="tel:+15124286076">Call to Reserve</a>
+            <a class="btn btn-secondary" href="https://maps.google.com/?q=4601+Southwest+Pkwy+Austin+TX+78735" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p><strong>Milano Cafe</strong> · 4601 Southwest Parkway, Austin, TX 78735 · (512) 428-6076 · Family-Owned Since 2009</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div class="brand">
+          <span class="brand-mark">M</span>
+          <span class="brand-text">
+            <span class="brand-name">Milano Cafe</span>
+            <span class="brand-sub">4601 Southwest Parkway, Austin, TX 78735 · (512) 428-6076</span>
+          </span>
+        </div>
+        <div class="footer-links">
+          <a href="#menu">Menu</a>
+          <a href="#catering">Catering</a>
+          <a href="#reviews">Guests</a>
+          <a href="#reserve">Reservations</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <span>© Milano Cafe · Italian Ristorante and Art Galleria, Austin</span>
+        <span>Family owned since 2009 · Closed Sundays</span>
+      </div>
+    </div>
   </footer>
 
-  <div class="modal-bg" id="resModal" onclick="if(event.target===this)this.classList.remove('open')">
-    <form class="modal" onsubmit="event.preventDefault();document.getElementById('resOk').style.display='block'">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <h3 style="font-size:1.8rem;color:var(--wine);">Reserve Your Table</h3>
-        <button type="button" onclick="document.getElementById('resModal').classList.remove('open')" style="background:none;font-size:1.5rem;">&times;</button>
-      </div>
-      <input type="text" required placeholder="Guest name" />
-      <input type="tel" required placeholder="Mobile number" />
-      <select required>
-        <option>2 Guests</option>
-        <option>4 Guests</option>
-        <option>6 Guests</option>
-        <option>8+ Guests (Group Table)</option>
-      </select>
-      <input type="text" required placeholder="Preferred evening &amp; time (e.g. Friday 7:00 PM)" />
-      <button type="submit" class="btn btn-wine" style="width:100%;">Confirm Reservation Request</button>
-      <div class="ok" id="resOk">Preview Demo: Connects to your host inbox, SMS, or OpenTable/Resy so dinner guests book in seconds from their phone!</div>
-    </form>
+  <div class="mobile-dock" aria-label="Quick actions">
+    <button type="button" class="btn btn-primary" data-open-bag>Reserve (<span data-bag-count>0</span>)</button>
+    <a href="tel:+15124286076" class="btn btn-secondary">Call Us</a>
   </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="bagDrawer" aria-hidden="true" aria-label="Table and takeout selection">
+    <div class="drawer-head">
+      <h3>Your Selection</h3>
+      <button type="button" class="close-btn" data-close-bag aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body" id="bagItems"></div>
+    <form class="drawer-foot" id="pickupForm" hidden>
+      <div id="drawerFoot">
+        <div class="subtotal-row"><span>Estimated total</span><span id="bagSubtotal">$0.00</span></div>
+        <div class="drawer-fields">
+          <input type="text" name="customer" placeholder="Your name" required aria-label="Your name">
+          <select name="pickup_time" aria-label="When">
+            <option>Tonight, 6:30pm</option>
+            <option>Tonight, 8:00pm</option>
+            <option>Tomorrow lunch</option>
+            <option>Call me to arrange</option>
+          </select>
+        </div>
+        <input type="text" class="drawer-note" name="notes" placeholder="Party size, occasion or allergies" aria-label="Notes">
+        <button type="submit" class="btn btn-primary" style="width:100%">Request This Order</button>
+      </div>
+    </form>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    window.SHOP_CONFIG = {
+      slug: 'milano-cafe',
+      currency: '$',
+      tz: 'America/Chicago',
+      fallbackHours: 'Mon to Fri 10am - 9pm',
+      hours: { 0:null, 1:[600,1260], 2:[600,1260], 3:[600,1260], 4:[600,1260], 5:[600,1260], 6:[660,1260] }
+    };
+  </script>
+  <script src="../assets/studio-core.js"></script>
 </body>
 </html>
