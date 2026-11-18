@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>That Coffee Place — Organic Coffee, Homemade Cakes &amp; Lunch in Yatton</title>
+  <meta name="description" content="Yatton's #1 rated independent courtyard coffee shop at 7 Pages Court. Ethically sourced organic coffee, seasonal lattes, baguettes, paninis, milkshakes & homemade cakes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --slate: #1C2B30;
+      --cinnamon: #B56235;
+      --cinnamon-dark: #944C25;
+      --butter: #FBF8F3;
+      --linen: #F2EBE0;
+      --white: #FFFFFF;
+      --muted: #5C686C;
+      --border: rgba(28, 43, 48, 0.11);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--butter);
+      color: var(--slate);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.12; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    .preview-bar {
+      background: var(--slate);
+      color: #FBF8F3;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .preview-bar a {
+      background: var(--cinnamon);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(251, 248, 243, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-bar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 15px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-title { font-family: 'Playfair Display', serif; font-size: 1.42rem; font-weight: 700; }
+    .brand-loc { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cinnamon); font-weight: 600; display: block; }
+    nav { display: flex; gap: 26px; font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    nav a:hover { color: var(--cinnamon); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .btn-cinnamon { background: var(--cinnamon); color: #fff; box-shadow: 0 8px 20px rgba(181, 98, 53, 0.24); }
+    .btn-cinnamon:hover { background: var(--cinnamon-dark); }
+    .btn-dark { background: var(--slate); color: #fff; }
+    .btn-outline { border: 1.5px solid var(--border); background: transparent; color: var(--slate); }
+    .btn-outline:hover { background: var(--linen); }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 50px 24px 72px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .award-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--linen);
+      color: var(--slate);
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 4.9vw, 4rem); margin-bottom: 18px; }
+    .hero h1 em { color: var(--cinnamon); font-style: italic; font-weight: 500; }
+    .hero p { font-size: 1.04rem; color: var(--muted); max-width: 500px; margin-bottom: 28px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .proof-bar {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .proof-bar strong { display: block; font-size: 1.1rem; color: var(--slate); }
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3.35;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 22px 48px rgba(28, 43, 48, 0.13);
+    }
+
+    /* Seasonal Banner */
+    .seasonal {
+      max-width: 1180px;
+      margin: 0 auto 20px;
+      padding: 0 24px;
+    }
+    .seasonal-inner {
+      background: var(--linen);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .seasonal-inner strong { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+
+    .section { max-width: 1180px; margin: 0 auto; padding: 72px 24px; }
+    .eyebrow {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--cinnamon);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section h2 { font-size: clamp(2rem, 3.6vw, 2.85rem); }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .fbtn {
+      padding: 8px 17px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .fbtn.active, .fbtn:hover { background: var(--slate); color: #fff; border-color: var(--slate); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .card-head { display: flex; justify-content: space-between; gap: 12px; }
+    .card h3 { font-size: 1.24rem; }
+    .price { font-weight: 700; color: var(--cinnamon); white-space: nowrap; }
+    .card p { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--linen);
+      color: var(--slate);
+    }
+
+    /* Cake & Lunch Platter Pre-Order */
+    .preorder-box {
+      background: var(--slate);
+      color: #FBF8F3;
+      border-radius: 26px;
+      padding: 52px 46px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+    .preorder-box p { color: rgba(251, 248, 243, 0.8); margin: 14px 0 22px; }
+    .form-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 26px;
+      display: grid;
+      gap: 12px;
+    }
+    .form-card input, .form-card select, .form-card textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .form-card select option { color: var(--slate); }
+    .form-card input::placeholder, .form-card textarea::placeholder { color: rgba(255,255,255,0.55); }
+
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .quote {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+    .quote p { font-family: 'Playfair Display', serif; font-size: 1.04rem; margin: 10px 0 14px; }
+    .quote small { color: var(--muted); font-weight: 600; }
+
+    .visit {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.94rem;
+    }
+    .amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .notice {
+      display: none;
+      background: #E6F2EA;
+      color: #1F5132;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 34px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 43, 48, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+    .modal-bg.open { display: flex; }
+    .modal { background: #fff; border-radius: 20px; max-width: 430px; width: 100%; padding: 28px; }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero, .preorder-box, .quotes, .visit { grid-template-columns: 1fr; }
+      .preorder-box, .visit { padding: 30px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar" id="previewBar">
+    <span>Custom redesign concept for <strong>That Coffee Place (Yatton)</strong> by Shayan — built for thatcoffee.place and 100% customisable.</span>
+    <a href="mailto:shayan44wrgs@gmail.com?subject=That%20Coffee%20Place%20Website%20Preview">Claim or Edit Anything</a>
+    <button onclick="document.getElementById('previewBar').remove()" style="background:none;color:#ccc;font-size:1.1rem;">&times;</button>
+  </div>
+
+  <header>
+    <div class="nav-bar">
+      <a href="#">
+        <span class="brand-title">That Coffee Place</span>
+        <span class="brand-loc">7 Pages Court · Yatton</span>
+      </a>
+      <nav>
+        <a href="#menu">Full Menu</a>
+        <a href="#platters">Cakes &amp; Platters</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Hours &amp; Courtyard</a>
+      </nav>
+      <button class="btn btn-cinnamon" onclick="showCart()">Click &amp; Collect (<span id="cartQty">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="award-pill">★ 4.8 Rated · #1 Coffee Spot in Yatton · 100% Recommend on Facebook</div>
+        <h1>Ethically sourced coffee &amp; <em>homemade</em> cakes in Pages Court.</h1>
+        <p>A cosy independent courtyard café with a big heart. Pop in for organic espresso, seasonal lattes, freshly toasted paninis, stacked baguettes, thick milkshakes, and cakes worth a detour.</p>
+        <div class="hero-btns">
+          <a href="#menu" class="btn btn-cinnamon">Explore Food &amp; Drinks</a>
+          <a href="tel:+441934833964" class="btn btn-outline">Call 01934 833964</a>
+        </div>
+        <div class="proof-bar">
+          <div><strong>Organic &amp; Ethical</strong>Coffee, teas &amp; hot chocolate</div>
+          <div><strong>Veggie, Vegan &amp; Kids</strong>Something for everyone</div>
+          <div><strong>Easy Parking</strong>Just yards from Pages Court</div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="/assets/that-coffee-place-hero.jpg" alt="Cinnamon bun cappuccino, freshly made chicken and bacon baguette, homemade cheesecake and milkshake at That Coffee Place" />
+      </div>
+    </section>
+
+    <div class="seasonal">
+      <div class="seasonal-inner">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:4px;">On the Specials Board Now</span>
+          <strong>Treat Yourself: Cinnamon Bun Cappuccino &amp; Spiced Pumpkin Latte</strong>
+          <p style="font-size:0.9rem;color:var(--muted);">Pair either seasonal special with a warm homemade brownie or slice of baked cheesecake.</p>
+        </div>
+        <button class="btn btn-dark" onclick="addCart('Cinnamon Bun Cappuccino', 3.95)">+ Add Seasonal Special</button>
+      </div>
+    </div>
+
+    <section class="section" id="menu">
+      <div class="top-row">
+        <div>
+          <p class="eyebrow">Locally Sourced &amp; Freshly Made</p>
+          <h2>Our Food, Coffee &amp; Cakes</h2>
+        </div>
+        <div class="filters">
+          <button class="fbtn active" onclick="filterCards('all', this)">Everything</button>
+          <button class="fbtn" onclick="filterCards('drinks', this)">Coffee &amp; Shakes</button>
+          <button class="fbtn" onclick="filterCards('food', this)">Paninis &amp; Baguettes</button>
+          <button class="fbtn" onclick="filterCards('cakes', this)">Homemade Cakes</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card" data-cat="drinks">
+          <div>
+            <div class="card-head"><h3>Cinnamon Bun Cappuccino</h3><span class="price">£3.95</span></div>
+            <p>Ethically sourced organic espresso steamed with velvety milk, sweet cinnamon bun syrup, and a warm cinnamon dusting.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Seasonal Special</span><button class="fbtn" onclick="addCart('Cinnamon Bun Cappuccino', 3.95)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="drinks">
+          <div>
+            <div class="card-head"><h3>Pumpkin Spice Latte</h3><span class="price">£3.95</span></div>
+            <p>Cosy autumn spice paired with smooth house espresso and your choice of organic dairy or plant-based milk.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Autumn Favourite</span><button class="fbtn" onclick="addCart('Pumpkin Spice Latte', 3.95)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="drinks">
+          <div>
+            <div class="card-head"><h3>Organic Flat White, Latte &amp; Teas</h3><span class="price">£3.40</span></div>
+            <p>Crafted from bean to cup with passion and sustainability—alongside organic hot chocolate and loose-leaf teas.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Oat, Soya &amp; Coconut</span><button class="fbtn" onclick="addCart('Organic Flat White', 3.40)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="drinks">
+          <div>
+            <div class="card-head"><h3>Handmade Milkshakes &amp; Smoothies</h3><span class="price">£4.25</span></div>
+            <p>Thick, creamy spun milkshakes and blended fruit smoothies—loved by kids and grown-ups right across Yatton.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Local Legend</span><button class="fbtn" onclick="addCart('Handmade Milkshake', 4.25)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="food">
+          <div>
+            <div class="card-head"><h3>Chicken &amp; Bacon Baguette</h3><span class="price">£6.50</span></div>
+            <p>Crusty bakery baguette generously filled with tender chicken, crispy bacon, and fresh salad leaves.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Regulars' #1 Lunch</span><button class="fbtn" onclick="addCart('Chicken & Bacon Baguette', 6.50)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="food">
+          <div>
+            <div class="card-head"><h3>Toasted Tuna Melt Panini &amp; Salad</h3><span class="price">£6.75</span></div>
+            <p>Golden pressed panini packed with savoury tuna and melted cheese, served warm alongside a crisp dressed side salad.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Served Hot</span><button class="fbtn" onclick="addCart('Tuna Panini & Salad', 6.75)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="food">
+          <div>
+            <div class="card-head"><h3>Morning Breakfast Baguette or Roll</h3><span class="price">£4.95</span></div>
+            <p>Made fresh from 8:00am every weekday—plus hot buttered toast, peanut butter on toast, veggie &amp; vegan choices, and kids' plates.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Served from 8am</span><button class="fbtn" onclick="addCart('Morning Breakfast Baguette', 4.95)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="cakes">
+          <div>
+            <div class="card-head"><h3>Famous Homemade Cheesecake</h3><span class="price">£4.10</span></div>
+            <p>Rich, velvety house-made cheesecake on a buttery biscuit base—reviewers literally call it “worth a detour to Yatton”.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Must Try</span><button class="fbtn" onclick="addCart('Homemade Cheesecake', 4.10)">+ Add</button></div>
+        </article>
+
+        <article class="card" data-cat="cakes">
+          <div>
+            <div class="card-head"><h3>Fudge Brownies &amp; Counter Cakes</h3><span class="price">£3.60</span></div>
+            <p>Freshly baked gooey chocolate brownies, layered sponges, and delicious vegetarian &amp; vegan cake slices changing weekly.</p>
+          </div>
+          <div class="card-foot"><span class="chip">Veggie &amp; Vegan Options</span><button class="fbtn" onclick="addCart('Homemade Fudge Brownie', 3.60)">+ Add</button></div>
+        </article>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-top:16px;">* Guide prices shown for preview — every item, seasonal drink &amp; price will be matched to your exact menu board.</p>
+    </section>
+
+    <section class="section" id="platters" style="padding-top:10px;">
+      <div class="preorder-box">
+        <div>
+          <p class="eyebrow" style="color:#E7A27A;">Pre-Order for Work or Home</p>
+          <h2>Lunch Platters, Cake Boxes &amp; Group Takeaway</h2>
+          <p>Ordering lunch for a local Yatton business, planning a family get-together, or reserving a box of our homemade brownies and cheesecake slices? Place an enquiry in seconds and collect fresh at Pages Court.</p>
+          <a href="tel:+441934833964" class="btn btn-cinnamon">Or Ring Us: 01934 833964</a>
+        </div>
+        <form class="form-card" onsubmit="event.preventDefault();document.getElementById('platterOk').style.display='block'">
+          <h3 style="font-size:1.35rem;">Reserve a Box or Platter</h3>
+          <input type="text" required placeholder="Your name" />
+          <input type="text" required placeholder="Phone or email" />
+          <select required>
+            <option value="">What can we prepare for you?</option>
+            <option>Mixed Baguette &amp; Panini Lunch Platter</option>
+            <option>Homemade Cake &amp; Brownie Treat Box</option>
+            <option>Group Morning Breakfast Rolls &amp; Coffees</option>
+            <option>Table Hold / General Question</option>
+          </select>
+          <textarea rows="2" placeholder="Collection day, time &amp; any vegan/veggie notes..."></textarea>
+          <button type="submit" class="btn btn-cinnamon" style="width:100%;">Send Pre-Order Request</button>
+          <div class="notice" id="platterOk">Preview Demo: On your live thatcoffee.place site, platter &amp; cake-box orders arrive straight in your inbox!</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="reviews" style="padding-top:10px;">
+      <div class="top-row">
+        <div>
+          <p class="eyebrow">4.8 ★ Across 40+ TripAdvisor Reviews</p>
+          <h2>Loved by Yatton Locals &amp; Visitors</h2>
+        </div>
+      </div>
+      <div class="quotes">
+        <div class="quote">
+          <div style="color:#C87D28;">★★★★★</div>
+          <p>“Best coffee quality, friendly staff, warm inside and good value. Spotlessly clean and the best coffee place in Yatton.”</p>
+          <small>— Tom B. · Yatton</small>
+        </div>
+        <div class="quote">
+          <div style="color:#C87D28;">★★★★★</div>
+          <p>“Would highly recommend their tuna panini and salad or chicken and bacon baguette—huge favourite of mine! Homemade cakes all look amazing.”</p>
+          <small>— Verified Guest · TripAdvisor</small>
+        </div>
+        <div class="quote">
+          <div style="color:#C87D28;">★★★★★</div>
+          <p>“Fantastic breakfast baguette, excellent coffee, my son loved the milkshake, and well worth a detour just to try the cheesecake.”</p>
+          <small>— Family Visitor · Somerset</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit" style="padding-top:10px;">
+      <div class="visit">
+        <div>
+          <p class="eyebrow">7 Pages Court, Yatton</p>
+          <h2>Opening Hours</h2>
+          <div style="margin-top:16px;">
+            <div class="hours-row"><span>Monday – Friday</span><strong>8:00 AM – 5:00 PM</strong></div>
+            <div class="hours-row"><span>Saturday</span><strong>9:00 AM – 4:00 PM</strong></div>
+            <div class="hours-row"><span>Sunday</span><strong>Closed</strong></div>
+          </div>
+          <div class="amenities">
+            <span class="chip">Courtyard Outdoor Seating</span>
+            <span class="chip">Free Wi-Fi</span>
+            <span class="chip">Wheelchair Accessible</span>
+            <span class="chip">Highchairs Available</span>
+            <span class="chip">In-Store Pickup</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <p><strong>Address:</strong> 7 Pages Court, Yatton, Somerset, BS49 4EG</p>
+          <p><strong>Telephone:</strong> <a href="tel:+441934833964" style="font-weight:700;">01934 833964</a></p>
+          <p style="font-size:0.9rem;color:var(--muted);">Tucked inside Pages Court shopping precinct with handy car parking just a few yards away.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+            <a href="https://maps.google.com/?q=That+Coffee+Place+7+Pages+Court+Yatton+BS49+4EG" target="_blank" rel="noopener" class="btn btn-cinnamon">Get Directions</a>
+            <a href="https://www.instagram.com/that_coffee_place/" target="_blank" rel="noopener" class="btn btn-outline">Instagram</a>
+            <a href="https://www.facebook.com/ThatcoffeeplaceYatton/" target="_blank" rel="noopener" class="btn btn-outline">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>That Coffee Place</strong> · 7 Pages Court, Yatton, BS49 4EG · 01934 833964</p>
+  </footer>
+
+  <div class="modal-bg" id="cartModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3>In-Store Pickup Order</h3>
+        <button onclick="document.getElementById('cartModal').classList.remove('open')" style="background:none;font-size:1.5rem;">&times;</button>
+      </div>
+      <div id="cartBody" style="font-size:0.9rem;color:var(--muted);margin-bottom:14px;">Tap any drink, baguette, panini, or cake to test pre-ordering!</div>
+      <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:14px;"><span>Total</span><span id="cartSum">£0.00</span></div>
+      <button class="btn btn-cinnamon" style="width:100%;" onclick="document.getElementById('cartNotice').style.display='block'">Place Pickup Order</button>
+      <div class="notice" id="cartNotice">Preview Demo: Ready to connect to your shop email or POS so commuters &amp; lunchtime regulars can order ahead for collection!</div>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filters .fbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+      });
+    }
+    function addCart(name, price) {
+      cart.push({ name, price });
+      document.getElementById('cartQty').textContent = cart.length;
+      showCart();
+    }
+    function showCart() {
+      if (cart.length) {
+        document.getElementById('cartBody').innerHTML = cart.map(i => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--slate);"><span>${i.name}</span><strong>£${i.price.toFixed(2)}</strong></div>`).join('');
+        document.getElementById('cartSum').textContent = '£' + cart.reduce((a, b) => a + b.price, 0).toFixed(2);
+      }
+      document.getElementById('cartModal').classList.add('open');
+    }
+  </script>
+</body>
+</html>

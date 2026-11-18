@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bean Tree Café &amp; The Nest — Page Park, Staple Hill, Bristol</title>
+  <meta name="description" content="Homemade food, specialty coffee, vegan & gluten-free cakes in the heart of award-winning Page Park, Bristol — plus The Nest light-filled space for private parties, classes & workshops." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage-deep: #1E382B;
+      --sage: #2F5642;
+      --sage-soft: #E6EFE9;
+      --cream: #F8F5EE;
+      --card: #FFFFFF;
+      --ochre: #C38234;
+      --ochre-dark: #A56A22;
+      --ink: #1C241F;
+      --muted: #58655D;
+      --border: rgba(30, 56, 43, 0.12);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    .preview-bar {
+      background: var(--sage-deep);
+      color: #F3EFE6;
+      font-size: 0.82rem;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .preview-bar a {
+      background: var(--ochre);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+    .preview-close { background: none; color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(248, 245, 238, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+      line-height: 1;
+    }
+    .logo span {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    nav { display: flex; gap: 26px; }
+    nav a { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    nav a:hover { color: var(--sage-deep); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .btn-sage { background: var(--sage-deep); color: #fff; }
+    .btn-sage:hover { background: var(--sage); }
+    .btn-ochre { background: var(--ochre); color: #fff; }
+    .btn-ochre:hover { background: var(--ochre-dark); }
+    .btn-ghost { border: 1.5px solid var(--border); color: var(--sage-deep); background: transparent; }
+    .btn-ghost:hover { background: var(--sage-soft); }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 52px 24px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1.02fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sage-soft);
+      color: var(--sage-deep);
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.2vw, 4.4rem);
+      font-weight: 600;
+      color: var(--sage-deep);
+      margin-bottom: 18px;
+    }
+    .hero h1 em { font-style: italic; color: var(--ochre); font-weight: 500; }
+    .hero p { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin-bottom: 28px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .stats strong { display: block; font-size: 1.12rem; color: var(--sage-deep); }
+    .hero-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4 / 3.35;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: 0 22px 50px rgba(30, 56, 43, 0.14);
+    }
+
+    .section { max-width: 1180px; margin: 0 auto; padding: 76px 24px; }
+    .kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--ochre);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--sage-deep);
+      font-weight: 600;
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .pill.active, .pill:hover {
+      background: var(--sage-deep);
+      color: #fff;
+      border-color: var(--sage-deep);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .item-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .item-top { display: flex; justify-content: space-between; gap: 12px; }
+    .item-card h3 { font-size: 1.4rem; color: var(--sage-deep); }
+    .item-price { font-weight: 700; color: var(--ochre); white-space: nowrap; }
+    .item-card p { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+    .diet-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .diet-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--sage-soft);
+      color: var(--sage-deep);
+    }
+    .diet-badge.gf { background: #FDF1E1; color: var(--ochre-dark); }
+
+    /* THE NEST Event Hire Feature */
+    .nest-wrap {
+      background: var(--sage-deep);
+      color: #F8F5EE;
+      border-radius: 30px;
+      padding: 60px 52px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .nest-wrap h2 { color: #fff; margin-bottom: 16px; }
+    .nest-lead { color: rgba(248, 245, 238, 0.82); font-size: 1rem; margin-bottom: 26px; }
+    .use-cases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .use-box {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .use-box strong { display: block; font-size: 0.95rem; margin-bottom: 4px; color: #F5C98E; }
+    .use-box span { font-size: 0.83rem; color: rgba(255,255,255,0.78); }
+    .nest-form {
+      background: #fff;
+      color: var(--ink);
+      border-radius: 22px;
+      padding: 30px;
+      display: grid;
+      gap: 13px;
+    }
+    .nest-form h3 { font-size: 1.65rem; color: var(--sage-deep); }
+    .nest-form input, .nest-form select, .nest-form textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.86rem;
+      color: var(--sage-deep);
+      font-weight: 500;
+    }
+    .check-row input { width: auto; }
+
+    /* Park Life Strip */
+    .park-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .park-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .park-card h3 { font-size: 1.5rem; color: var(--sage-deep); margin-bottom: 8px; }
+    .park-card p { font-size: 0.91rem; color: var(--muted); }
+
+    /* Visit */
+    .visit-box {
+      background: var(--sage-soft);
+      border-radius: 26px;
+      padding: 46px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .msg-ok {
+      display: none;
+      background: var(--sage-soft);
+      color: var(--sage-deep);
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Takeaway Modal */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 35, 27, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 90;
+    }
+    .modal-bg.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 22px;
+      max-width: 440px;
+      width: 100%;
+      padding: 30px;
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero, .nest-wrap, .park-grid, .visit-box, .use-cases { grid-template-columns: 1fr; }
+      .nest-wrap, .visit-box { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar" id="previewBar">
+    <span>Custom website concept for <strong>Bean Tree Café &amp; The Nest (Page Park, Bristol)</strong> by Shayan — everything can be edited to fit your menu &amp; room hire setup.</span>
+    <a href="mailto:shayan44wrgs@gmail.com?subject=Bean%20Tree%20Cafe%20Website%20Preview">Claim or Customise</a>
+    <button class="preview-close" onclick="document.getElementById('previewBar').remove()">&times;</button>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <strong>Bean Tree Café</strong>
+        <span>&amp; The Nest · Page Park, Bristol</span>
+      </a>
+      <nav>
+        <a href="#menu">Café Menu</a>
+        <a href="#nest">Hire The Nest</a>
+        <a href="#park">Park Life</a>
+        <a href="#visit">Find Us</a>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <a href="#nest" class="btn btn-ochre">Hire The Nest</a>
+        <button class="btn btn-sage" onclick="openBag()">Takeaway (<span id="count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="badge">Open Every Day · 9:00am – 4:30pm · By the Clock Tower</div>
+        <h1>Homemade food &amp; warm coffee in the heart of <em>Page Park.</em></h1>
+        <p>Freshly made toasties, soups, vibrant vegan &amp; gluten-free bakes, and barista coffee beside the Sensory Garden—plus <strong>The Nest</strong>, our sunlit community room for private parties, baby classes, and local workshops.</p>
+        <div class="cta-row">
+          <a href="#menu" class="btn btn-sage">Browse Today's Menu</a>
+          <a href="#nest" class="btn btn-ghost">Enquire About The Nest</a>
+        </div>
+        <div class="stats">
+          <div>
+            <strong>94% Recommend</strong>
+            Loved across BS16
+          </div>
+          <div>
+            <strong>Vegan &amp; GF</strong>
+            Homemade daily bakes
+          </div>
+          <div>
+            <strong>The Nest Space</strong>
+            Parties, yoga &amp; groups
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="/assets/bean-tree-cafe-hero.jpg" alt="Cappuccino, homemade roasted tomato soup with grilled sourdough toastie, lemon drizzle cake and brownie overlooking Page Park" />
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="header-flex">
+        <div>
+          <p class="kicker">Fresh from Our Park Kitchen</p>
+          <h2>Café Menu &amp; Cake Counter</h2>
+        </div>
+        <div class="pills">
+          <button class="pill active" onclick="filterItems('all', this)">All Menu</button>
+          <button class="pill" onclick="filterItems('lunch', this)">Breakfast &amp; Lunch</button>
+          <button class="pill" onclick="filterItems('cakes', this)">Homemade Cakes</button>
+          <button class="pill" onclick="filterItems('diet', this)">Vegan &amp; Gluten-Free</button>
+          <button class="pill" onclick="filterItems('drinks', this)">Coffee &amp; Drinks</button>
+        </div>
+      </div>
+
+      <div class="menu-grid">
+        <article class="item-card" data-cats="lunch diet">
+          <div>
+            <div class="item-top"><h3>Homemade Roasted Tomato Soup</h3><span class="item-price">£5.95</span></div>
+            <p>Slow-simmered tomato &amp; herb soup served piping hot with thick buttered toast or pair with a melted toastie.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">Vegetarian · Vegan Option</span>
+            <button class="pill" onclick="addBag('Roasted Tomato Soup', 5.95)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="lunch">
+          <div>
+            <div class="item-top"><h3>Morning Crispy Bacon Roll</h3><span class="item-price">£4.50</span></div>
+            <p>Freshly griddled back bacon in a soft bakery roll—the Sunday morning Junior Parkrun favourite across Staple Hill.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">Morning Favourite</span>
+            <button class="pill" onclick="addBag('Crispy Bacon Roll', 4.50)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="lunch">
+          <div>
+            <div class="item-top"><h3>Bean Tree Club &amp; Toasties</h3><span class="item-price">£6.95</span></div>
+            <p>Stacked club sandwiches and golden pressed toasties made to order for eating in or taking out to the park benches.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">Made Fresh to Order</span>
+            <button class="pill" onclick="addBag('Bean Tree Club Sandwich', 6.95)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="lunch diet">
+          <div>
+            <div class="item-top"><h3>Middle Eastern &amp; Plant-Based Plates</h3><span class="item-price">£7.25</span></div>
+            <p>Seasonal falafel, hummus, warm flatbreads, and colourful veggie &amp; vegan lunch specials prepared in-house.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">100% Vegan</span>
+            <button class="pill" onclick="addBag('Vegan Mezze Lunch', 7.25)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="cakes diet">
+          <div>
+            <div class="item-top"><h3>Gluten-Free Lemon Drizzle Cake</h3><span class="item-price">£3.60</span></div>
+            <p>Zesty, moist homemade sponge soaked in bright lemon syrup—always clearly labelled on our counter and online.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge gf">Gluten-Free</span>
+            <button class="pill" onclick="addBag('GF Lemon Drizzle Slice', 3.60)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="cakes diet">
+          <div>
+            <div class="item-top"><h3>Rich Chocolate Brownies &amp; Flapjacks</h3><span class="item-price">£3.50</span></div>
+            <p>Fudgy house-baked chocolate brownies, golden oat flapjacks, and rotating vegan traybakes for an afternoon park treat.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">Veggie &amp; Vegan Bakes</span>
+            <button class="pill" onclick="addBag('Homemade Chocolate Brownie', 3.50)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="drinks diet">
+          <div>
+            <div class="item-top"><h3>Cappuccino, Flat White &amp; Mochaccino</h3><span class="item-price">£3.40</span></div>
+            <p>Smooth espresso pulled to order with local dairy, oat, or soya milk—ready to stroll with through the Sensory Garden.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge">Oat &amp; Soya Available</span>
+            <button class="pill" onclick="addBag('Barista Cappuccino', 3.40)">+ Pre-Order</button>
+          </div>
+        </article>
+
+        <article class="item-card" data-cats="drinks">
+          <div>
+            <div class="item-top"><h3>Luxury Hot Chocolate &amp; Marshmallows</h3><span class="item-price">£3.80</span></div>
+            <p>Velvety hot chocolate topped with fluffy marshmallows, plus scoop ice creams and kid-sized drinks after the play area.</p>
+          </div>
+          <div class="diet-row">
+            <span class="diet-badge gf">Kids &amp; Family Hit</span>
+            <button class="pill" onclick="addBag('Hot Chocolate w/ Marshmallows', 3.80)">+ Pre-Order</button>
+          </div>
+        </article>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-top:16px;">* Illustrative prices shown for preview — we'll update every item &amp; daily cake board to match your exact till prices.</p>
+    </section>
+
+    <section class="section" id="nest" style="padding-top:10px;">
+      <div class="nest-wrap">
+        <div>
+          <p class="kicker" style="color:#F5C98E;">Private Event &amp; Community Space</p>
+          <h2>Hire The Nest at Page Park</h2>
+          <p class="nest-lead">Tucked right behind Bean Tree Café, The Nest is a bright, welcoming, light-filled space overlooking Green Flag award-winning parkland—ideal for one-off celebrations or regular weekly classes in BS16.</p>
+          <div class="use-cases">
+            <div class="use-box">
+              <strong>Children's Parties &amp; Showers</strong>
+              <span>Steps from three play areas, accessible toilets, and optional homemade café buffet platters.</span>
+            </div>
+            <div class="use-box">
+              <strong>Baby, Yoga &amp; Wellness Classes</strong>
+              <span>Calm morning &amp; daytime slots where parents can grab coffee and cake right before or after class.</span>
+            </div>
+            <div class="use-box">
+              <strong>Workshops &amp; Local Clubs</strong>
+              <span>Flexible seating, natural daylight, step-free access, and tea/coffee urn packages on tap.</span>
+            </div>
+            <div class="use-box">
+              <strong>In-House Café Catering</strong>
+              <span>Add sandwich platters, homemade brownies, vegan &amp; gluten-free cakes, and barista drinks.</span>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.75);">Step-free accessible venue · Baby-changing &amp; Changing Places facilities on site · Free park surroundings</p>
+        </div>
+
+        <form class="nest-form" onsubmit="submitNest(event)">
+          <h3>Check Dates for The Nest</h3>
+          <p style="font-size:0.86rem;color:var(--muted);">Tell us what you're planning and we'll get straight back to you with availability and hire rates.</p>
+          <input type="text" required placeholder="Your name" />
+          <input type="email" required placeholder="Email address" />
+          <select required>
+            <option value="">Type of booking</option>
+            <option>Children's Birthday / Family Party</option>
+            <option>Baby Shower / Celebration</option>
+            <option>Weekly Class (Yoga, Baby Group, Fitness)</option>
+            <option>Community Workshop / Meeting</option>
+          </select>
+          <input type="text" placeholder="Preferred date(s) &amp; approximate guest count" />
+          <label class="check-row">
+            <input type="checkbox" checked />
+            <span>Include Bean Tree Café buffet / tea &amp; cake catering info</span>
+          </label>
+          <textarea rows="2" placeholder="Any dietary needs or extra details..."></textarea>
+          <button type="submit" class="btn btn-ochre" style="width:100%;">Send Nest Hire Enquiry</button>
+          <div class="msg-ok" id="nestMsg">Preview Demo: Once live, every party &amp; weekly class enquiry lands neatly in beantreecafebristol@gmail.com with date, headcount &amp; catering add-ons!</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="park" style="padding-top:10px;">
+      <div class="header-flex">
+        <div>
+          <p class="kicker">Part of Staple Hill Since 2017</p>
+          <h2>Made for Every Park Moment</h2>
+        </div>
+      </div>
+      <div class="park-grid">
+        <div class="park-card">
+          <h3>Sunday Parkrun &amp; Tennis</h3>
+          <p>Order your post-run bacon roll and flat white online so it's hot and waiting when you finish the 9am Junior Parkrun or come off the courts.</p>
+        </div>
+        <div class="park-card">
+          <h3>Family &amp; Pushchair Friendly</h3>
+          <p>Step-free access, baby-friendly seating, accessible toilets on site, kids' snacks and ice creams right beside Page Park's three play areas.</p>
+        </div>
+        <div class="park-card">
+          <h3>Dog Walkers Welcome Outside</h3>
+          <p>While indoor seating stays dog-free, our outdoor benches overlook the sensory garden and tree-lined avenues—grab a takeaway cup on your morning walk.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit" style="padding-top:10px;">
+      <div class="visit-box">
+        <div>
+          <p class="kicker">Come Say Hello</p>
+          <h2>Open 7 Days a Week</h2>
+          <p style="color:var(--muted);margin:12px 0 20px;">Find us towards the historic Clock Tower and Sensory Garden inside Page Park, Staple Hill.</p>
+          <p><strong>Monday – Sunday:</strong> 9:00 AM – 4:30 PM</p>
+          <p style="margin-top:8px;"><strong>Address:</strong> Bean Tree Café, Page Park, 21 Park Road, Staple Hill, Bristol BS16 5LB</p>
+          <p style="margin-top:8px;"><strong>Email:</strong> <a href="mailto:beantreecafebristol@gmail.com" style="text-decoration:underline;">beantreecafebristol@gmail.com</a></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="https://maps.google.com/?q=Bean+Tree+Cafe+Page+Park+21+Park+Rd+Bristol+BS16+5LB" target="_blank" rel="noopener" class="btn btn-sage">Open in Google Maps</a>
+          <a href="#nest" class="btn btn-ochre">Book The Nest Event Space</a>
+          <a href="https://www.facebook.com/beantreecafebristol/" target="_blank" rel="noopener" class="btn btn-ghost">Follow Updates on Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Bean Tree Café &amp; The Nest</strong> · Page Park, Staple Hill, Bristol BS16 5LB · Open Daily 9:00am – 4:30pm</p>
+  </footer>
+
+  <div class="modal-bg" id="bagModal" onclick="if(event.target===this)closeBag()">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3 style="font-size:1.6rem;color:var(--sage-deep);">Park Click &amp; Collect</h3>
+        <button onclick="closeBag()" style="background:none;font-size:1.5rem;">&times;</button>
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:14px;">Skip the busy park queue — collect straight from the counter.</p>
+      <div id="bagList" style="margin-bottom:16px;font-size:0.92rem;color:var(--muted);">No items added yet — choose anything from the Café Menu.</div>
+      <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:14px;">
+        <span>Total</span><span id="total">£0.00</span>
+      </div>
+      <button class="btn btn-sage" style="width:100%;" onclick="document.getElementById('bagOk').style.display='block'">Confirm Collection Order</button>
+      <div class="msg-ok" id="bagOk" style="margin-top:12px;">Preview Demo: We can enable click-and-collect for busy weekends (or keep it as a browse-only menu if your kitchen prefers!).</div>
+    </div>
+  </div>
+
+  <script>
+    const items = [];
+    function filterItems(cat, btn) {
+      document.querySelectorAll('.pills .pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.item-card').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cats.includes(cat)) ? 'flex' : 'none';
+      });
+    }
+    function addBag(name, price) {
+      items.push({ name, price });
+      document.getElementById('count').textContent = items.length;
+      openBag();
+    }
+    function openBag() {
+      const list = document.getElementById('bagList');
+      if (items.length) {
+        list.innerHTML = items.map(x => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink);"><span>${x.name}</span><strong>£${x.price.toFixed(2)}</strong></div>`).join('');
+        document.getElementById('total').textContent = '£' + items.reduce((a, b) => a + b.price, 0).toFixed(2);
+      }
+      document.getElementById('bagModal').classList.add('open');
+    }
+    function closeBag() { document.getElementById('bagModal').classList.remove('open'); }
+    function submitNest(e) { e.preventDefault(); document.getElementById('nestMsg').style.display = 'block'; }
+  </script>
+</body>
+</html>

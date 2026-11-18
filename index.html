@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shayan Web Studio — Hospitality Website Outreach &amp; Client Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0E1012;
+      --card: #16191D;
+      --card-2: #1D2127;
+      --text: #F4F2EE;
+      --muted: #9BA2AE;
+      --accent: #E27A48;
+      --green: #38B27E;
+      --border: rgba(255,255,255,0.09);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1220px; margin: 0 auto; padding: 48px 24px 80px; }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+    h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 400; line-height: 1.05; }
+    .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 20px; min-width: 135px; }
+    .kpi strong { display: block; font-size: 1.5rem; color: #fff; }
+    .kpi span { font-size: 0.78rem; color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+    .lead {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .lead img { width: 100%; height: 215px; object-fit: cover; }
+    .lead-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .b { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 999px; background: var(--card-2); color: var(--muted); }
+    .b.hot { background: rgba(226, 122, 72, 0.16); color: #F49B70; }
+    .b.ready { background: rgba(56, 178, 126, 0.15); color: #5BD19E; }
+    .lead h2 { font-size: 1.28rem; font-weight: 700; }
+    .meta { font-size: 0.83rem; color: var(--muted); }
+    .audit { background: var(--card-2); border-radius: 12px; padding: 13px 15px; font-size: 0.84rem; color: #D4D8DF; }
+    .audit strong { color: #fff; display: block; margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .actions { margin-top: auto; padding-top: 10px; display: flex; gap: 10px; }
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn-main { background: var(--accent); color: #fff; }
+    .btn-sec { background: var(--card-2); color: var(--text); border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <p class="eyebrow">Shayan · Web Design Sales Command Center</p>
+        <h1>Tailored Client Prototypes &amp; Verified Leads</h1>
+        <p style="color:var(--muted);max-width:580px;margin-top:10px;">6 deeply researched hospitality businesses across the US, UK, Canada &amp; Australia — each with a bespoke conversion-focused prototype and a personalized human outreach draft staged in Gmail.</p>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi"><strong>6</strong><span>Custom Prototypes</span></div>
+        <div class="kpi"><strong>4</strong><span>Countries (US/UK/CA/AU)</span></div>
+        <div class="kpi"><strong>6</strong><span>Verified Emails &amp; Drafts</span></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="lead">
+        <img src="/assets/bean-tree-cafe-hero.jpg" alt="Bean Tree Cafe Bristol" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">No Own Website</span><span class="b">Bristol, UK</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>1. Bean Tree Café &amp; The Nest</h2>
+          <p class="meta">Page Park, Staple Hill, Bristol BS16 5LB · beantreecafebristol@gmail.com · 94% FB / 4.2★ Google</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            Facebook-only. Guests say cakes/dietaries aren't clearly displayed &amp; queues build up; huge untapped revenue from online booking enquiries for <em>The Nest</em> private party &amp; class hire space + café buffet platters.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./bean-tree-cafe/" target="_blank">Open Live Prototype ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="lead">
+        <img src="/assets/my-coffee-house-hero.jpg" alt="My Coffee House Williamstown" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">No Website</span><span class="b">Melbourne, AU</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>2. My Coffee House</h2>
+          <p class="meta">25 Ferguson St, Williamstown VIC 3016 · mycoffeehousewilliamstown@gmail.com · 4.4★ Google (98 reviews)</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            No website (Google links to Facebook). Random directories show conflicting Tuesday/morning hours; prototype adds official 6am hours, crispy pork roll &amp; focaccia menu, morning skip-the-queue pickup &amp; office platters.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./my-coffee-house/" target="_blank">Open Live Prototype ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="lead">
+        <img src="/assets/that-coffee-place-hero.jpg" alt="That Coffee Place Yatton" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">Broken Template Site</span><span class="b">Yatton / Bristol, UK</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>3. That Coffee Place</h2>
+          <p class="meta">7 Pages Court, Yatton BS49 4EG · thatcoffeeplace2017@gmail.com · 4.8★ #1 in Yatton / 100% FB</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            Current thatcoffee.place repeats placeholder "Excellent Coffee" 8 times, calls the shop "The Coffee Place", has dead Learn More buttons &amp; zero menu/hours. Prototype highlights seasonal lattes, paninis, cheesecake &amp; platters.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./that-coffee-place/" target="_blank">Open Live Prototype ↗</a>
+            <a class="btn btn-sec" href="https://thatcoffee.place/" target="_blank" rel="noopener">Old Site</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="lead">
+        <img src="/assets/cannon-coffee-hero.jpg" alt="Cannon Coffee Austin" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">Outdated 2020 Site</span><span class="b">Austin, TX, USA</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>4. Cannon Coffee</h2>
+          <p class="meta">1901 W. William Cannon Dr, Austin TX · cannoncoffeetx@gmail.com · 4.5★ Google (174 reviews)</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            Current site shows 10 uncaptioned 2019–20 gallery photos, no hours, duplicate "Food (Copy)" page &amp; omits fan-favorite Ube Lavender Latte &amp; Honey Cortado. Prototype adds morning pickup ordering &amp; South Austin office boxes.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./cannon-coffee/" target="_blank">Open Live Prototype ↗</a>
+            <a class="btn btn-sec" href="https://www.cannoncoffeetx.com/" target="_blank" rel="noopener">Old Site</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="lead">
+        <img src="/assets/frankies-diner-hero.jpg" alt="Frankie's Diner Toronto" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">Typos + PDF Menu</span><span class="b">Toronto, Canada</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>5. Frankie's Diner</h2>
+          <p class="meta">994 Queen St. W, Toronto ON · info@frankiesdiner.ca · 4.5★ (500+ ratings · Est. 1977)</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            Homepage lists two conflicting sets of closing hours, postal code typo (M6J 168), PDF-only menu &amp; empty cart while losing 20–30% on 500+ DoorDash orders. Prototype drives commission-free direct pickup &amp; brunch groups.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./frankies-diner/" target="_blank">Open Live Prototype ↗</a>
+            <a class="btn btn-sec" href="https://www.frankiesdiner.ca/" target="_blank" rel="noopener">Old Site</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="lead">
+        <img src="/assets/milano-cafe-hero.jpg" alt="Milano Cafe Austin" />
+        <div class="lead-body">
+          <div class="badges"><span class="b hot">Broken Call Link + Cluttered</span><span class="b">Austin, TX, USA</span><span class="b ready">Gmail Draft Ready</span></div>
+          <h2>6. Milano Cafe</h2>
+          <p class="meta">4601 Southwest Pkwy, Austin TX · cafemilanoaustin@gmail.com · 532 Yelp reviews · 94% FB</p>
+          <div class="audit">
+            <strong>Sales &amp; Revenue Angle</strong>
+            Current site repeats the same 6 images 3x, hides hours &amp; signature Lobster Ravioli, and the Catering phone button links to a Google Search URL instead of dialing. Prototype converts dinner reservations &amp; high-ticket corporate catering.
+          </div>
+          <div class="actions">
+            <a class="btn btn-main" href="./milano-cafe/" target="_blank">Open Live Prototype ↗</a>
+            <a class="btn btn-sec" href="https://www.milanoaustin.com/" target="_blank" rel="noopener">Old Site</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

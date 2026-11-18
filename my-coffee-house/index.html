@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Coffee House — Specialty Coffee, Brekkie &amp; Sandwich Bar | Williamstown VIC</title>
+  <meta name="description" content="Early 6am specialty Melbourne coffee, crispy Vietnamese roast pork rolls, generous toasted focaccias, smoothies & all-day brekkie at 25 Ferguson St, Williamstown VIC 3016." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --eucalyptus: #1E423E;
+      --coral: #C95B3B;
+      --coral-dark: #A9482B;
+      --sand: #FCF9F4;
+      --shell: #F2ECE1;
+      --white: #FFFFFF;
+      --ink: #192422;
+      --muted: #5A6764;
+      --border: rgba(30, 66, 62, 0.12);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--sand);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; line-height: 1.06; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    .preview-bar {
+      background: var(--eucalyptus);
+      color: #FCF9F4;
+      font-size: 0.82rem;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .preview-bar a {
+      background: var(--coral);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(252, 249, 244, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-row {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 15px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand strong { font-family: 'Instrument Serif', serif; font-size: 1.75rem; color: var(--eucalyptus); font-weight: 400; line-height: 1; display: block; }
+    .brand small { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); font-weight: 600; }
+    nav { display: flex; gap: 26px; font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    nav a:hover { color: var(--eucalyptus); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .btn-coral { background: var(--coral); color: #fff; box-shadow: 0 8px 22px rgba(201, 91, 59, 0.24); }
+    .btn-coral:hover { background: var(--coral-dark); }
+    .btn-euc { background: var(--eucalyptus); color: #fff; }
+    .btn-soft { background: var(--shell); color: var(--eucalyptus); }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 50px 24px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1.02fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hours-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--shell);
+      color: var(--eucalyptus);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(3rem, 5.6vw, 4.7rem); color: var(--eucalyptus); margin-bottom: 18px; }
+    .hero h1 em { font-style: italic; color: var(--coral); }
+    .hero p { font-size: 1.04rem; color: var(--muted); max-width: 500px; margin-bottom: 28px; }
+    .cta-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .highlights strong { display: block; font-size: 1.08rem; color: var(--eucalyptus); }
+    .hero img {
+      width: 100%;
+      aspect-ratio: 4 / 3.3;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: 0 22px 48px rgba(30, 66, 62, 0.13);
+    }
+
+    .section { max-width: 1180px; margin: 0 auto; padding: 72px 24px; }
+    .kicker { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--coral); margin-bottom: 8px; }
+    .section h2 { font-size: clamp(2.4rem, 4.2vw, 3.4rem); color: var(--eucalyptus); }
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .tab.active, .tab:hover { background: var(--eucalyptus); color: #fff; border-color: var(--eucalyptus); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .mcard {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .mcard-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .mcard h3 { font-size: 1.55rem; color: var(--eucalyptus); }
+    .mprice { font-weight: 700; color: var(--coral); white-space: nowrap; }
+    .mcard p { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+    .mfoot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .badge { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--shell); color: var(--eucalyptus); }
+
+    .catering {
+      background: var(--eucalyptus);
+      color: #FCF9F4;
+      border-radius: 28px;
+      padding: 54px 48px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .catering h2 { color: #fff; margin-bottom: 14px; }
+    .catering p { color: rgba(252, 249, 244, 0.8); margin-bottom: 20px; }
+    .cform {
+      background: #fff;
+      color: var(--ink);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      gap: 12px;
+    }
+    .cform input, .cform select, .cform textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--sand);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .visit-grid {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .hrow { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
+    .ok { display: none; background: #E4F2EC; color: var(--eucalyptus); padding: 12px 14px; border-radius: 10px; font-size: 0.84rem; font-weight: 600; margin-top: 8px; }
+    footer { text-align: center; padding: 34px 24px; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    .modal-bg { position: fixed; inset: 0; background: rgba(25,36,34,0.55); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
+    .modal-bg.open { display: flex; }
+    .modal { background: #fff; border-radius: 22px; max-width: 430px; width: 100%; padding: 28px; }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero, .catering, .visit-grid { grid-template-columns: 1fr; }
+      .catering, .visit-grid { padding: 30px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar" id="previewBar">
+    <span>Custom website concept for <strong>My Coffee House (Williamstown, Melbourne)</strong> by Shayan — every detail, dish &amp; photo can be changed to suit you.</span>
+    <a href="mailto:shayan44wrgs@gmail.com?subject=My%20Coffee%20House%20Williamstown%20Preview">Claim or Customise</a>
+    <button onclick="document.getElementById('previewBar').remove()" style="background:none;color:#ddd;font-size:1.1rem;">&times;</button>
+  </div>
+
+  <header>
+    <div class="nav-row">
+      <a href="#" class="brand">
+        <strong>My Coffee House</strong>
+        <small>25 Ferguson St · Williamstown VIC</small>
+      </a>
+      <nav>
+        <a href="#menu">Brekkie &amp; Lunch</a>
+        <a href="#catering">Office Platters</a>
+        <a href="#visit">Hours &amp; Location</a>
+      </nav>
+      <button class="btn btn-coral" onclick="toggleModal(true)">Order Takeaway (<span id="qty">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="hours-chip">Pouring from 6:00am Mon &amp; Wed–Sat · 7:00am Sun · Closed Tue</div>
+        <h1>Proper Melbourne coffee &amp; <em>generous</em> Ferguson St lunches.</h1>
+        <p>Your friendly, funky Williamstown café and sandwich bar. Swing by for an early 6am flat white, sit outside with a stacked toasted focaccia or famous crispy Vietnamese roast pork roll, and bring the whole family.</p>
+        <div class="cta-group">
+          <a href="#menu" class="btn btn-coral">Skip the Morning Queue</a>
+          <a href="tel:+61393975577" class="btn btn-soft">Call (03) 9397 5577</a>
+        </div>
+        <div class="highlights">
+          <div><strong>4.4 ★ on Google</strong>Nearly 100 local reviews</div>
+          <div><strong>Dietaries Welcome</strong>GF, veggie &amp; plant milks</div>
+          <div><strong>Outdoor Seating</strong>Easy parking out front</div>
+        </div>
+      </div>
+      <img src="/assets/my-coffee-house-hero.jpg" alt="Melbourne flat white, crispy Vietnamese roast pork banh mi roll, toasted gourmet focaccia and mango smoothie on sunlit Williamstown outdoor table" />
+    </section>
+
+    <section class="section" id="menu">
+      <div class="bar-head">
+        <div>
+          <p class="kicker">Made Fresh from 6:00am</p>
+          <h2>Coffee, Rolls, Focaccias &amp; Brekkie</h2>
+        </div>
+        <div class="tabs">
+          <button class="tab active" onclick="filterM('all', this)">All Favourites</button>
+          <button class="tab" onclick="filterM('lunch', this)">Focaccias &amp; Rolls</button>
+          <button class="tab" onclick="filterM('brekkie', this)">All-Day Brekkie</button>
+          <button class="tab" onclick="filterM('drinks', this)">Espresso &amp; Smoothies</button>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="mcard" data-cat="lunch">
+          <div>
+            <div class="mcard-head"><h3>Crispy Vietnamese Roast Pork Roll</h3><span class="mprice">$13.50</span></div>
+            <p>Crunchy bakery roll loaded with crackling roast pork, tangy pickled carrot &amp; daikon, cucumber, fresh coriander, and optional fresh chilli.</p>
+          </div>
+          <div class="mfoot"><span class="badge">Ferguson St Favourite</span><button class="tab" onclick="addM('Crispy Roast Pork Roll', 13.50)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="lunch">
+          <div>
+            <div class="mcard-head"><h3>Generous Toasted Gourmet Focaccias</h3><span class="mprice">$14.50</span></div>
+            <p>Big, golden-pressed café focaccias stuffed with fresh fillings—chicken avo, Mediterranean veggie, or ham, cheese &amp; tomato. GF bread available.</p>
+          </div>
+          <div class="mfoot"><span class="badge">GF &amp; Veggie Options</span><button class="tab" onclick="addM('Toasted Gourmet Focaccia', 14.50)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="lunch">
+          <div>
+            <div class="mcard-head"><h3>Sandwich Bar Specials &amp; Fresh Salads</h3><span class="mprice">$12.90</span></div>
+            <p>Build-your-own fresh sandwiches, wraps, and vibrant seasonal salads made to order with all dietary requirements happily catered for.</p>
+          </div>
+          <div class="mfoot"><span class="badge">Made to Order</span><button class="tab" onclick="addM('Fresh Sandwich Bar Wrap', 12.90)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="brekkie">
+          <div>
+            <div class="mcard-head"><h3>Early-Bird Bacon &amp; Egg Brekkie Roll</h3><span class="mprice">$11.50</span></div>
+            <p>Hot off the grill from 6:00am with free-range egg, crispy bacon, melted cheese, and house relish—ideal for tradies &amp; morning commuters.</p>
+          </div>
+          <div class="mfoot"><span class="badge">From 6:00am</span><button class="tab" onclick="addM('Bacon & Egg Brekkie Roll', 11.50)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="brekkie">
+          <div>
+            <div class="mcard-head"><h3>Williamstown Sit-Down Brekkie Plates</h3><span class="mprice">$19.50</span></div>
+            <p>Classic Melbourne brunch favourites—smashed avo on sourdough, eggs your way, toasties, and daily chef's breakfast specials.</p>
+          </div>
+          <div class="mfoot"><span class="badge">Dine-In or Outdoor</span><button class="tab" onclick="addM('Smashed Avo & Poached Eggs', 19.50)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="drinks">
+          <div>
+            <div class="mcard-head"><h3>Flat White, Latte, Magic &amp; Long Black</h3><span class="mprice">$5.20</span></div>
+            <p>Expertly extracted Melbourne espresso poured hot or over ice with full cream, skim, oat, almond, soy, or lactose-free milk.</p>
+          </div>
+          <div class="mfoot"><span class="badge">Order Ahead Ready</span><button class="tab" onclick="addM('Melbourne Flat White', 5.20)">+ Add</button></div>
+        </article>
+
+        <article class="mcard" data-cat="drinks">
+          <div>
+            <div class="mcard-head"><h3>Real Fruit Smoothies, Teas &amp; Iced Drinks</h3><span class="mprice">$8.50</span></div>
+            <p>Refreshing blended mango, berry, and green smoothies, specialty loose teas, chai lattes, and kid-friendly treats.</p>
+          </div>
+          <div class="mfoot"><span class="badge">Freshly Blended</span><button class="tab" onclick="addM('Fresh Fruit Smoothie', 8.50)">+ Add</button></div>
+        </article>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-top:16px;">* Sample AUD pricing shown for preview — updated to match your exact cabinet &amp; board menu before going live.</p>
+    </section>
+
+    <section class="section" id="catering" style="padding-top:10px;">
+      <div class="catering">
+        <div>
+          <p class="kicker" style="color:#F5A389;">Williamstown Workplace Catering</p>
+          <h2>Focaccia, Sandwich &amp; Morning Tea Platters</h2>
+          <p>Feeding a team along Ferguson Street, Douglas Parade, or the Williamstown foreshore? We put together generous sandwich, focaccia, and sweet platters with labelled gluten-free, vegetarian, and vegan pieces.</p>
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.85);">“What a great café in the heart of Williamstown. Had a focaccia and coffee—generous size, dietaries catered for, fancy pork roll and tasty smoothie, easy parking out front.” — Google Review</p>
+        </div>
+        <form class="cform" onsubmit="event.preventDefault();document.getElementById('catOk').style.display='block'">
+          <h3 style="font-size:1.7rem;color:var(--eucalyptus);">Enquire About a Platter</h3>
+          <input type="text" required placeholder="Your name or local business" />
+          <input type="text" required placeholder="Mobile or email" />
+          <select required>
+            <option value="">Platter type</option>
+            <option>Mixed Focaccia, Wrap &amp; Pork Roll Lunch Box</option>
+            <option>Morning Brekkie Rolls &amp; Coffee Run</option>
+            <option>Dietary-Friendly (GF / Veggie / Vegan) Mix</option>
+          </select>
+          <textarea rows="2" placeholder="Date, pickup/delivery time &amp; headcount..."></textarea>
+          <button type="submit" class="btn btn-coral" style="width:100%;">Request Catering Quote</button>
+          <div class="ok" id="catOk">Preview Demo: Sends straight to mycoffeehousewilliamstown@gmail.com so local offices &amp; clinics can book lunch platters in 30 seconds!</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="visit" style="padding-top:10px;">
+      <div class="visit-grid">
+        <div>
+          <p class="kicker">Official Trading Hours</p>
+          <h2>Visit Us on Ferguson St</h2>
+          <div style="margin-top:16px;">
+            <div class="hrow"><span>Monday</span><strong>6:00 AM – 3:00 PM</strong></div>
+            <div class="hrow"><span>Tuesday</span><strong>Closed</strong></div>
+            <div class="hrow"><span>Wednesday – Saturday</span><strong>6:00 AM – 3:00 PM</strong></div>
+            <div class="hrow"><span>Sunday</span><strong>7:00 AM – 3:00 PM</strong></div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--muted);margin-top:14px;">Wheelchair accessible · Kid friendly · Sunny footpath seating · Laptop welcome</p>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <p><strong>Address:</strong> 25 Ferguson Street, Williamstown VIC 3016</p>
+          <p><strong>Phone:</strong> <a href="tel:+61393975577" style="font-weight:700;">(03) 9397 5577</a></p>
+          <p><strong>Email:</strong> mycoffeehousewilliamstown@gmail.com</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+            <a href="https://maps.google.com/?q=My+Coffee+House+25+Ferguson+St+Williamstown+VIC+3016" target="_blank" rel="noopener" class="btn btn-euc">Open in Google Maps</a>
+            <a href="tel:+61393975577" class="btn btn-soft">Call Ahead</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>My Coffee House</strong> · 25 Ferguson Street, Williamstown VIC 3016 · (03) 9397 5577</p>
+  </footer>
+
+  <div class="modal-bg" id="mModal" onclick="if(event.target===this)toggleModal(false)">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3 style="font-size:1.7rem;color:var(--eucalyptus);">Express Takeaway</h3>
+        <button onclick="toggleModal(false)" style="background:none;font-size:1.5rem;">&times;</button>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:14px;">Beat the 8am morning rush — grab and go at 25 Ferguson St.</p>
+      <div id="mList" style="font-size:0.9rem;color:var(--muted);margin-bottom:14px;">Tap any coffee, pork roll, or focaccia to try pre-ordering.</div>
+      <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:14px;"><span>Total (AUD)</span><span id="mSum">$0.00</span></div>
+      <button class="btn btn-coral" style="width:100%;" onclick="document.getElementById('mOk').style.display='block'">Place Pickup Order</button>
+      <div class="ok" id="mOk">Preview Demo: Links straight to Square/Stripe/email so morning regulars order coffee &amp; lunches with zero UberEats fees!</div>
+    </div>
+  </div>
+
+  <script>
+    const mBag = [];
+    function filterM(cat, btn) {
+      document.querySelectorAll('.tabs .tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.mcard').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+      });
+    }
+    function addM(name, price) {
+      mBag.push({ name, price });
+      document.getElementById('qty').textContent = mBag.length;
+      document.getElementById('mList').innerHTML = mBag.map(x => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink);"><span>${x.name}</span><strong>$${x.price.toFixed(2)}</strong></div>`).join('');
+      document.getElementById('mSum').textContent = '$' + mBag.reduce((a, b) => a + b.price, 0).toFixed(2);
+      toggleModal(true);
+    }
+    function toggleModal(v) { document.getElementById('mModal').classList.toggle('open', v); }
+  </script>
+</body>
+</html>
